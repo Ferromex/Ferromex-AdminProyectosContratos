@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Proyectos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.proyectos}">proyectos</h2>
+			<div class="clear"></div>
+			<div class="info">	
+				<table>  
+					<thead>  
+					   <tr>  
+					       <th th:text="#{thead.idProyecto}">idProyecto</th>
+					       <th th:text="#{thead.idCarpeta}">idCarpeta</th>  
+					       <th th:text="#{thead.empresa}">empresa</th>  
+					       <th th:text="#{thead.nombreProyecto}">nombreProyecto</th>  
+					       <th th:text="#{thead.nombreCorto}">nombreCorto</th>  
+					       <th th:text="#{thead.tipoObra}">tipoObra</th>  
+					       <th th:text="#{thead.origenProyecto}">origenProyecto</th>  
+					       <th th:text="#{thead.division}">division</th>
+					       <th th:text="#{thead.fechaRecepcion}">fechaRecepcion</th>  
+					       <th th:text="#{thead.presupuesto}">presupuesto</th> 
+					       <th th:text="#{thead.elementoPEP}">elementoPEP</th> 
+					       <th th:text="#{thead.centroCostos}">centroCostos</th> 
+					       <th th:text="#{thead.solicitudInversion}">solicitudInversion</th> 
+					       <th th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</th> 
+					       <th th:text="#{thead.solicitudSAP}">solicitudSAP</th> 
+					       <th th:text="#{thead.inicioEstimado}">inicioEstimado</th> 
+					       <th th:text="#{thead.finEstimado}">finEstimado</th> 
+					       <th th:text="#{thead.duracionProy}">duracionProy</th> 
+					       <th th:text="#{thead.inicioReal}">inicioReal</th> 
+					       <th th:text="#{thead.finReal}">finReal</th> 
+					   </tr>  
+					</thead>  
+					<tbody>  
+					   <tr th:each="proy : ${proyectos}">  
+					   	   <td>
+						   		<a href="#" th:href="@{/registrarFechas.htm(idProyecto=${proy.idProyecto})}">
+						   			<span th:text="${#numbers.formatInteger(proy.idProyecto,3)}">idProyecto</span>
+						   		</a>
+						   </td>
+					       <td th:text="${proy.idCarpeta}">idCarpeta</td>  
+					       <td>
+					       	<span th:each="emp : ${empresas}">
+								<span th:if="${emp.idEmpresa} == ${proy.empresa}" th:text="${emp.nombreEmpresa}">empresa</span>
+						    </span>   	
+					       </td>
+					       <td th:text="${proy.nombreProyecto}">nombreProyecto</td>  
+					       <td th:text="${proy.nombreCorto}">nombreCorto</td>  
+					       <td>
+					       	<span th:each="tobra : ${tobras}">
+								<span th:if="${tobra.idObra} == ${proy.tipoObra}" th:text="${tobra.obra}">tipoObra</span>
+						    </span>   	
+					       </td>
+					       <td>
+					       	<span th:each="origenp : ${origen}">
+								<span th:if="${origenp.origenProyectoId} == ${proy.origenProyecto}" th:text="${origenp.origenProyectoNombre}">origenProyecto</span>
+						    </span>   	
+					       </td>
+					       <td>
+					       	<span th:each="divs : ${divisiones}">
+								<span th:if="${divs.idDivision} == ${proy.division}" th:text="${divs.nombreDivision}">division</span>
+						    </span>   	
+					       </td>
+					       <td th:text="${proy.fechaRecepcion}">fechaRecepcion</td>  
+					       <td th:text="${proy.presupuesto}">presupuesto</td> 
+					       <td th:text="${proy.elementoPEP}">elementoPEP</td> 
+					       <td th:text="${proy.centroCostos}">centroCostos</td> 
+					       <td th:text="(${proy.solicitudInversion} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
+					       <td th:text="${proy.fechaEntregaSAI}">fechaEntregaSAI</td> 
+					       <td th:text="${proy.solicitudSAP}">solicitudSAP</td> 
+					       <td th:text="${proy.inicioEstimado}">inicioEstimado</td> 
+					       <td th:text="${proy.finEstimado}">finEstimado</td> 
+					       <td th:text="${proy.duracionProy}">duracionProy</td> 
+					       <td th:text="${proy.inicioReal}">inicioReal</td> 
+					       <td th:text="${proy.finReal}">finReal</td> 
+					   </tr> 
+					</tbody>  
+				</table>
+				<div class="clear"></div>
+				<div class="clear"><a th:href="@{/nuevoproyecto.htm}">Nuevo Proyecto</a></div>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

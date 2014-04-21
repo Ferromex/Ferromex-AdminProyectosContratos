@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Nuevo Proyecto</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.proyectos}">Proyectos</h2>
+			<div class="clear"></div>
+				<form method="post">
+				  <table>
+				  	<thead>
+				  		<tr>
+					  		<th th:text="#{thead.nuevoProyecto}">Proyectos</th>
+					  	</tr>	
+				  	</thead>
+					<tbody>
+					    <tr>   
+					       <td th:text="#{thead.empresa}">empresa</td>  
+						   <td align="left">
+						   	<select id="empresa" name="empresa" required="required">
+							  <option th:each="empresa : ${empresas}" 
+							          th:value="${empresa.idEmpresa}"
+							          th:text="${empresa.nombreEmpresa}">Empresa</option>
+							</select>
+						   </td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.nombreProyecto}">nombreProyecto</td>  
+						   <td align="left"><input type="text" name="nombreProyecto" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.nombreCorto}">nombreCorto</td>  
+						   <td align="left"><input type="text" name="nombreCorto" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.tipoObra}">tipoObra</td>  
+						   <td align="left">
+						   	<select id="tipoObra" name="tipoObra" required="required">
+							  <option th:each="obra : ${tobras}" 
+							          th:value="${obra.idObra}"
+							          th:text="${obra.obra}">Tipo de Obra</option>
+							</select>
+						   </td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.origenProyecto}">origenProyecto</td>  
+						   <td align="left">
+						   	<select id="origenProyecto" name="origenProyecto" required="required">
+							  <option th:each="origenp : ${origen}" 
+							          th:value="${origenp.origenProyectoId}"
+							          th:text="${origenp.origenProyectoNombre}">Origen Proyecto</option>
+							</select>
+						   </td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.division}">division</td>  
+						   <td align="left">
+						   	<select id="division" name="division" required="required">
+							  <option th:each="divs : ${divisiones}" 
+							          th:value="${divs.idDivision}"
+							          th:text="${divs.nombreDivision}">Division</option>
+							</select>
+						   </td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.fechaRecepcion}">fechaRecepcion</td>  
+						   <td align="left"><input type="date" name="fechaRecepcion"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.presupuesto}">presupuesto</td> 
+						   <td align="left"><input type="text" name="presupuesto" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.elementoPEP}">elementoPEP</td> 
+						   <td align="left"><input type="text" name="elementoPEP" placeholder="00-00-00-00-00-0-0"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.centroCostos}">centroCostos</td> 
+						   <td align="left"><input type="text" name="centroCostos" placeholder="AAAAAA0000"/></td>
+					    </tr>
+						<tr>    
+					       <td th:text="#{thead.solicitudInversion}">solicitudInversion</td>  
+						   <td align="left">
+	      					   <label th:text="#{msg.true}"> Si </label>
+					           <input type="radio" name="solicitudInversion" id="Y" th:value="Y" checked="checked"/>
+				               <label th:text="#{msg.false}"> No </label>
+				               <input type="radio" name="solicitudInversion" id="N" th:value="N" />
+      					   </td>
+					    </tr>  
+					    <tr>   
+					       <td th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</td> 
+						   <td align="left"><input type="date" name="fechaEntregaSAI"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.solicitudSAP}">solicitudSAP</td> 
+						   <td align="left"><input type="text" name="solicitudSAP"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.inicioEstimado}">inicioEstimado</td> 
+						   <td align="left"><input type="date" name="inicioEstimado"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.finEstimado}">finEstimado</td> 
+						   <td align="left"><input type="date" name="finEstimado"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.duracionProy}">duracionProy</td> 
+						   <td align="left"><input type="text" name="duracionProy" placeholder="Dias" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.inicioReal}">inicioReal</td> 
+						   <td align="left"><input type="date" name="inicioReal"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.finReal}">finReal</td> 
+						   <td align="left"><input type="date" name="finReal"/></td>
+					    </tr>
+					</tbody>
+				  </table>
+				    <p><input type="submit" value="Submit" th:attr="value=#{boton.enviar}" formaction="nuevoproyecto.htm"/></p>
+				</form>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Documentos Oficiales</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.docs}">Documentos Oficiales</h2>
+			<div class="clear"></div>
+			<div class="info">	
+				<table id="documentosGBIP">  
+					<thead>  
+					   <tr>  
+							<th th:text="#{thead.idDoc}">IdDocumento</th>
+							<th th:text="#{thead.folio}">Folio</th>
+							<th th:text="#{thead.empresa}">Empresa</th>
+							<th th:text="#{thead.fecha}">Fecha</th>
+							<th th:text="#{thead.tipoDoc}">Tipo</th>
+							<th th:text="#{thead.tipoContrato}">TipoContrato</th>
+							<th th:text="#{thead.proveedor}">Proveedor</th>
+							<th th:text="#{thead.dirigido}">Dirigido A</th>
+							<th th:text="#{thead.proyecto}">Proyecto</th>
+							<th th:text="#{thead.elaboro}">Elaboro</th>
+							<th th:text="#{thead.observaciones}">Observaciones</th>
+					   </tr>    
+					</thead>  
+					<tbody>  
+					   <tr th:each="docs : ${docsOficiales}">  
+					       <td th:text="${#numbers.formatInteger(docs.idDocumento,3)}"></td>
+					       <td th:text="${docs.folio}"></td>
+					       <td>
+					       	<span th:each="emp : ${empresas}">
+								<span th:if="${emp.idEmpresa} == ${docs.empresa}" th:text="${emp.nombreEmpresa}">
+						       		Nombre de Empresa</span>
+						    </span>   	
+					       </td>
+						   <td class="fecha" th:text="${docs.fechaElaboracion}"></td>
+					       <td>
+					       	<span th:each="tdoc : ${tipoDoc}"> 
+					       		<span th:if="${tdoc.idTipoDocumento} == ${docs.tipoDocumento}" th:text="${tdoc.nombreTipoDocumento}">
+					       		Tipo Documento</span> 
+					       	</span>
+					       </td>
+					       <td th:text="${docs.tipoObra}"></td>
+					       <td>
+					       	<span th:each="prov : ${proveedores}"> 
+					       		<span th:if="${prov.idProveedor} == ${docs.idProveedor}" th:text="${prov.razonSocial}">
+					       		 	Proveedor</span> 
+					       	</span>
+					       </td>
+					       <td th:text="${docs.dirigidoA}"></td>
+					       <td>
+					       	<span th:each="proy : ${proyectos}"> 
+					       		<span th:if="${proy.idProyecto} == ${docs.proyecto}" th:text="${proy.nombreProyecto}">
+					       		 	Proyecto</span> 
+					       	</span>
+					       </td>
+					       <td>
+					       	<span th:each="resp : ${responsables}">
+					       		<span th:if="${resp.idResponsable} == ${docs.elaboro}" th:text="${resp.nombreResponsable +' '+ resp.apPaternoResp +' '+ resp.apMaternoResp}">
+					       		 Responsable</span>
+					       	</span>	
+					       </td>
+					       <td th:text="${docs.observaciones}"></td>
+					   </tr> 
+					</tbody>  
+				</table>
+				<a th:href="@{/nuevodocoficial.htm}">Nuevo Documento</a>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

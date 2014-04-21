@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+  
+  
+  
+	<div th:fragment="head">
+	   <div id="cabecera">	
+	   	  <h1 id="logo"> 
+	      </h1> 
+       </div>
+       <div id="menu">
+	       	<ul>
+	          <li><a href="proyectos.htm">Proyectos</a></li>
+	          <li><a href="proveedores.htm">Proveedores</a></li>
+	          <li><a href="documentosoficiales.htm">Documentos Oficiales</a></li>
+	          <li><a href="consultarGestores.htm">Responsables</a></li>
+	          <li><a href="#">Reportes</a></li>
+	       </ul>
+	   </div>    
+	</div>
+
+<div th:fragment="left">
+	<div id="secundario">
+		<h3>Documentación</h3>
+	        <ul id="documentacion">
+	            <li class="seleccionado"><a href="http://www.thymeleaf.org/">Thymeleaf</a></li>
+	            <li><a href="http://www.gradle.org/">Gradle</a></li>
+	            <li><a href="http://spring.io">Spring</a></li>
+	        </ul>
+        <div class="clear"></div>
+        <h3>Categorías</h3>
+           <ul id="categorias">
+              <li class="seleccionado"><a href="#">Categoría 1</a></li>
+              <li><a href="#">Categoría 2</a></li>
+              <li><a href="#">Categoría 3</a></li>
+           </ul>
+        <div class="clear"></div>
+        
+    </div>    
+</div>
+
+<div th:fragment="foot">
+	<div id="pie">
+	   <footer>
+			<p>2014 Propiedad de Ferromex, prohibida su distribución total o parcial.</p>
+			<p>&copy; Ferrocarril Mexicano S.A. de C.V., Bosque de Ciruelos no. 99, Col. Bosques de las Lomas, México D.F. C.P. 11700</p>
+	   </footer>	
+   	</div>
+</div>
+  
+  </body>
+  
+</html>

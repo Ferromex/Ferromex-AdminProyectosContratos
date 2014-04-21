@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Concursos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.concursos}">Concursos</h2>
+			<div class="clear"></div>
+			<div class="info">	
+			<form method="post" th:object="${concursoForm}">
+				<table>  
+					<thead>
+						<tr>
+							<th colspan="5" align="center" th:text="${proyecto.nombreProyecto}">nombreProyecto</th>
+						</tr>
+					</thead>
+					<tbody>  
+					   <tr>
+					   	   <td th:text="#{thead.idCarpeta}">Carpeta</td>
+					   	   <td th:text="${proyecto.idCarpeta}">carpeta</td>
+					   	   <td th:text="#{thead.nombreProyecto}">nombreProyecto</td>
+					   	   <td th:text="${proyecto.nombreProyecto}">nombreProyecto</td>
+					       <td>
+					       	<span th:each="estatusp : ${estProyectos}">
+								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.estatus}">estatusProyecto</span>
+						    </span>
+						   </td>    	
+					   </tr>  
+					   <tr>  
+					       <th align="center" colspan="8" th:text="#{thead.fechasEstimadas}">Fechas Estimadas</th>
+					   </tr>
+					   <tr>    
+							<td th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</td>
+							<td th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</td>
+							<td th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</td>
+							<td th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</td>
+							<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
+							<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
+							<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
+							<td th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</td>
+						</tr>
+						<tr>
+						  	<td th:text="${proyecto.fechEstInvitacion}"></td>
+						  	<td th:text="${proyecto.fechEstVisitaObra}"></td>
+							<td th:text="${proyecto.fechEstPreguntas}"></td>
+							<td th:text="${proyecto.fechEstRespuestas}"></td>
+							<td th:text="${proyecto.fechEstPropuestas}"></td>
+							<td th:text="${proyecto.fechEstRevisionTecnica}"></td>
+							<td th:text="${proyecto.fechEstChecklistTec}"></td>
+							<td th:text="${proyecto.fechEstCartaIntencion}"></td>
+					   </tr>
+				   </tbody>
+				</table>
+				<table>  
+					<thead>
+						<tr>
+							<th colspan="15" align="center" th:text="#{thead.gestion.concurso}">gestionConcurso</th>
+						</tr>
+					</thead>
+					<tbody>  
+					   <tr>    
+							<td th:text="#{thead.idConcurso}">idConcurso</td>
+							<td th:text="#{thead.tipoConcurso}">tipoConcurso</td>
+							<td th:text="#{thead.fechRealCartaIntencion}">fechRealCartaIntencion</td>
+							<td th:text="#{thead.fechRealVisitaObra}">fechRealVisitaObra</td>
+							<td th:text="#{thead.fechRealPreguntas}">fechRealPreguntas</td>
+							<td th:text="#{thead.fechRealRespuestas}">fechRealRespuestas</td>
+							<td th:text="#{thead.fechRealPropuestas}">fechRealPropuestas</td>
+							<td th:text="#{thead.fechRealRevisionTecnica}">fechRealRevisionTecnica</td>
+							<td th:text="#{thead.fechRealChecklistTec}">fechRealChecklistTec</td>
+							<td th:text="#{thead.fechRealCartaIntencion}">fechRealCartaIntencion</td>
+							<td th:text="#{thead.preciosCompetitivos}">preciosCompetitivos</td>
+							<td th:text="#{thead.enPresupuesto}">enPresupuesto</td>
+							<td th:text="#{thead.fechRevisionPrecios}">fechRevisionPrecios</td>
+							<td th:text="#{thead.fechRevisionCatalogo}">fechRevisionCatalogo</td>
+							<td th:text="#{thead.fechNotifGanador}">fechNotifGanador</td>
+							<td th:text="#{thead.fechVoBoGanador}">fechVoBoGanador</td>
+						</tr>
+						<tr th:each="conc : ${proyecto.concursos}">	
+						    <td th:text="${conc.idConcurso}"></td>
+						    <td th:text="${conc.tipoConcurso.concurso}"></td>
+							<td th:text="${conc.fechRealInvitacion}"></td>
+							<td th:text="${conc.fechRealVisitaObra}"></td>
+							<td th:text="${conc.fechRealPreguntas}"></td>
+							<td th:text="${conc.fechRealRespuestas}"></td>
+							<td th:text="${conc.fechRealPropuestas}"></td>
+							<td th:text="${conc.fechRealRevisionTecnica}"></td>
+							<td th:text="${conc.fechRealChecklistTec}"></td>
+							<td th:text="${conc.fechRealCartaIntencion}"></td>
+							<td th:text="(${conc.preciosCompetitivos} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
+							<td th:text="(${conc.enPresupuesto} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
+							<td th:text="${conc.fechRevisionPrecios}"></td>
+							<td th:text="${conc.fechRevisionCatalogo}"></td>
+							<td th:text="${conc.fechNotifGanador}"></td>
+							<td th:text="${conc.fechVoBoGanador}"></td>
+						</tr>
+					</tbody>  
+				</table>
+			
+				<table> 
+					<thead>
+						<tr>
+							<th colspan="14" align="center" th:text="#{thead.nuevo.concurso}">Nuevo Concurso</th>
+						</tr>
+					</thead>
+					<tbody>  
+						<tr>	
+							<td>
+							    <select id="tipoConcurso" name="tipoConcurso" required="required">
+								  <option th:each="tcon : ${tconcurso}" 
+								          th:value="${tcon.idConcurso}"
+								          th:text="${tcon.concurso}">TipoConcurso</option>
+								</select>
+						    </td>
+							<td><input type="date" name="fechaRealInvitacion"/></td>
+							<td><input type="date" name="fechaRealVisitaObra"/></td>
+							<td><input type="date" name="fechaRealPreguntas"/></td>
+							<td><input type="date" name="fechaRealRespuestas"/></td>
+							<td><input type="date" name="fechaRealPropuestas"/></td>
+							<td><input type="date" name="fechaRealRevisionTecnica"/></td>
+							<td><input type="date" name="fechaRealChecklistTec"/></td>
+							<td><input type="date" name="fechaRealCartaIntencion"/></td>
+							<td>
+	      					   <label th:text="#{thead.principalSi}">Si</label>
+					           		<input type="radio" name="preciosCompetitivos" id="Y" th:value="Y" checked="checked"/>
+				               <label th:text="#{thead.principalNo}">No</label>
+				               		<input type="radio" name="preciosCompetitivos" id="N" th:value="N" />
+      					    </td>
+							<td>
+	      					   <label th:text="#{thead.principalSi}">Si</label>
+					           <input type="radio" name="enPresupuesto" id="Y" th:value="Y" checked="checked"/>
+				               <label th:text="#{thead.principalNo}">No</label>
+				               <input type="radio" name="enPresupuesto" id="N" th:value="N" />
+      					    </td>
+							<td><input type="date" name="fechaRevisionPrecios"/></td>
+							<td><input type="date" name="fechaRevisionCatalogo"/></td>
+							<td><input type="date" name="fechaNotifGanador"/></td>
+							<td><input type="date" name="fechaVoBoGanador"/></td>
+						</tr>
+					</tbody>  
+				</table>
+				  	<input type="submit" value="Actualiza" th:attr="value=#{boton.actualizar}" formaction="concursos.htm"/>
+				  	<input type="submit" value="Cancela" th:attr="value=#{boton.cancelar}" formaction="proyectos.htm"/>
+				</form>
+				<div class="clear"></div>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

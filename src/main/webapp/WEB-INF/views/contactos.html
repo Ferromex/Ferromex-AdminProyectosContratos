@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Contactos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.contactos}">Contactos</h2>
+			<div class="clear"></div>
+			<div class="info">	
+				<table>  
+					<thead>
+					   <tr>
+					   	   <th colspan="12" align="center" th:text="${proveedor.razonSocial}">razonSocial</th>
+					   </tr>
+					   <tr>  
+					       <th th:text="#{thead.idContacto}">Id Contacto</th>
+					       <th th:text="#{thead.nombre}">Nombre</th>  
+					       <th th:text="#{thead.apPaterno}">ApellidoP</th>  
+					       <th th:text="#{thead.apMaterno}">ApellidoM</th>  
+					       <th th:text="#{thead.email}">Email</th>
+					       <th th:text="#{thead.email2}">Email</th>  
+					       <th th:text="#{thead.email3}">Email</th>  
+					       <th th:text="#{thead.email4}">Email</th>    
+					       <th th:text="#{thead.telOficina}">TelOficina</th>  
+					       <th th:text="#{thead.movil1}">Movil1</th>  
+					       <th th:text="#{thead.movil2}">Movil2</th>
+					       <th th:text="#{thead.principal}">Principal</th>  
+					   </tr>  
+					</thead>  
+					<tbody>  
+					   <tr th:each="cto : ${contactos}">  
+					   	   <td th:text="${#numbers.formatInteger(cto.idContacto,3)}"></td>
+					       <td th:text="${cto.nombreContacto}">Nombre</td>
+					       <td th:text="${cto.apPaterno}">Apellido P</td>
+					       <td th:text="${cto.apMaterno}">Appelido M</td>
+					       <td th:text="${cto.email}">Email</td>
+					       <td th:text="${cto.email2}">Email</td>
+					       <td th:text="${cto.email3}">Email</td>
+					       <td th:text="${cto.email4}">Email</td>
+					       <td th:text="${cto.telOficina}">Tel Oficina</td>
+					       <td th:text="${cto.movil1}">Movil 1</td>
+					       <td th:text="${cto.movil2}">Movil 2</td>
+					       <td th:text="(${cto.principal} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
+					       <td>
+						   		<!--a href="#" th:href="@{/eliminarcontacto.htm(idContacto=${cto.idContacto}, idProveedor=${proveedor.idProveedor})}">Eliminar</a--> 
+								<a href="#" th:href="@{/actualizarcontacto.htm(idContacto=${cto.idContacto})}">Editar</a>
+						   </td>					       
+					       
+					   </tr> 
+					</tbody>  
+				</table>
+				<div class="clear"></div>
+				<div class="clear"><a th:href="@{/nuevocontacto.htm}">Nuevo Contacto</a></div>
+				<div class="clear"><a th:href="@{/proveedores.htm}">Proveedores</a></div>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	  	
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Nuevo Documento Oficial</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+				<form method="post" action="#">
+				  <table>
+				  	<thead>
+				  		<tr>
+					  		<th th:text="#{thead.nombreTabla}">Nuevo Documento</th>
+					  	</tr>	
+				  	</thead>
+					<tbody>
+						<tr>    
+					       <td th:text="#{thead.empresa}">Empresa</td>
+						   <td align="left">
+						   	<select id="empresa" name="empresa" required="required">
+							  <option th:each="emp : ${empresas}" 
+							          th:value="${emp.idEmpresa}"
+							          th:text="${emp.nombreEmpresa}">Empresa</option>
+							</select>
+						   </td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.fecha}">Fecha</td>
+						   <td align="left"><input type="date" name="fechaElaboracion"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.tipoDoc}">Documento</td>
+						   <td align="left">
+						   	<select id="tipoDocumento" name="tipoDocumento" required="required">
+											<option th:each="tdoc : ${tipoDoc}"
+												th:value="${tdoc.idTipoDocumento}"
+												th:text="${tdoc.nombreTipoDocumento}">Tipo Documento</option>
+									</select>
+									</td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.tipoContrato}">TipoContrato</td>  
+						   <td align="left">
+	      					   <label th:text="#{thead.contratoServicio}">Servicio</label>
+					           <input type="radio" name="tipoObra" th:value="SERV" />
+				               <label th:text="#{thead.contratoObra}">Obra</label>
+				               <input type="radio" name="tipoObra" th:value="OBRA" checked="checked"/>
+      					   </td>
+					   </tr>  
+						<tr>    
+					       <td th:text="#{thead.proveedor}">Proveedor</td>
+						   <td align="left">
+						   	<select id="proveedor" name="proveedor" required="required">
+							  <option th:each="prov : ${proveedores}" 
+							          th:value="${prov.idProveedor}"
+							          th:text="${prov.razonSocial}">Proveedor</option>
+							</select>
+						   </td>						
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.dirigido}">Dirigido</td>
+						   <td align="left"><input type="text" name="dirigidoA" placeholder="Nombre o grupo" required="required"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.proyecto}">Proyecto</td>
+						   <td align="left">
+						   	<select id="proyecto" name="proyecto" required="required">
+							  <option th:each="proy : ${proyectos}" 
+							          th:value="${proy.idProyecto}"
+							          th:text="${proy.nombreProyecto}">Proyecto</option>
+							</select>
+						   </td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.elaboro}">Elaboro</td>
+						   <td align="left">
+						   	<select id="elaboro" name="elaboro" required="required">
+							  <option th:each="resp : ${responsables}" 
+							          th:value="${resp.idResponsable}"
+							          th:text="${resp.nombreResponsable +' '+ resp.apPaternoResp +' '+ resp.apMaternoResp}">Responsable</option>
+							</select>
+						   </td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.observaciones}">Observaciones</td>
+						   <td align="left"><input type="text" name="observaciones" placeholder="Comentarios del documento"/></td>
+						</tr>
+					</tbody>
+				  </table>
+				    <p><input type="submit" name="action" value="enviar" th:attr="value=Enviar" formaction="nuevodocoficial.htm"/> 
+				     <input type="submit" name="action" value="cancelar" th:attr="value=Cancelar" formaction="documentosoficiales.htm"/></p>
+				    
+				</form>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+
+</body>
+</html>

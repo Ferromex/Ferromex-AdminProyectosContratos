@@ -1,0 +1,107 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+version = '1.0'
+
+configurations {
+	weblogic
+}
+	
+ext {
+        jstlVersion = '1.2'
+        springVersion = '4.0.0.RELEASE'
+        springSecurity = '3.2.0.RELEASE'
+        junitVersion = '4+'
+        slf4jVersion = '1.7.5'
+        taglibVersion = '1.1.2'
+        validationVersion = '1.1.0.Final'
+        hValidator = '5.0.0.Final'
+        hibernateVersion = '4.2.0.Final'
+        jpaApi = '2.0-cr-1'
+        javaVersion = '6.0'
+        dbVersion = '11.2.0.3'
+        tyVersion = '2.1.2.RELEASE'
+        
+
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal() 
+}
+dependencies() {
+	weblogic files("${System.getenv()['MW_HOME']}/wlserver_12.1/server/lib/wlfullclient.jar")
+	
+   compile ("org.springframework:spring-orm:$springVersion")
+   compile ("org.springframework:spring-aop:$springVersion")
+   compile ("org.springframework:spring-webmvc:$springVersion")
+   compile ("org.springframework:spring-oxm:$springVersion")
+   compile ("org.springframework:spring-context:$springVersion")
+   
+   compile ("org.springframework.security:spring-security-core:$springSecurity")
+   compile ("org.springframework.security:spring-security-web:$springSecurity")
+   compile ("org.springframework.security:spring-security-config:$springSecurity")
+   compile ("org.springframework.security:spring-security-taglibs:$springSecurity")
+   
+
+   compile ("taglibs:standard:$taglibVersion")
+   
+   compile ("org.slf4j:slf4j-log4j12:$slf4jVersion")
+   compile ("org.slf4j:slf4j-api:$slf4jVersion")
+   compile ("javax.validation:validation-api:$validationVersion")
+   compile ("org.hibernate:hibernate-validator:$hValidator")
+
+   compile ("org.hibernate:hibernate-entitymanager:$hibernateVersion")
+   compile ("org.hibernate.java-persistence:jpa-api:$jpaApi")
+   compile ("com.oracle:ojdbc6:$dbVersion")
+   compile ("org.thymeleaf:thymeleaf-spring4:$tyVersion")
+   compile ("org.thymeleaf:thymeleaf-testing:$tyVersion")
+   
+   providedCompile 'javax.servlet:servlet-api:2.5'
+   testCompile ("junit:junit:$junitVersion")
+   runtime  ("javax.servlet:jstl:$jstlVersion")
+ 
+}
+
+
+task loadConfiguration (group:'Deployment', description:'Load configuration from -Penv=<env>'){	
+	def env = project.hasProperty('env') ? project.getProperty('env') : 'local'
+	
+	def configFile = file("$rootDir/.gradle/config/weblogicBuildConfig.groovy")
+	def parsedConfig = new ConfigSlurper(env).parse(configFile.toURL())
+ 
+	allprojects {
+		ext{
+			config = parsedConfig
+		}
+	}
+}
+
+task deployToWLS (group:'Deployment', description:'Deploy artifacts to a WLS. Req -Penv=<env>') << {
+ 
+	ant.taskdef( name: 'wldeploy',
+				classname: 'weblogic.ant.taskdefs.management.WLDeploy',
+				classpath: configurations.weblogic.asPath
+			)
+ 
+	new File("$buildDir/libs/").eachFile { file ->
+ 
+		// Get the filename minus the extension
+		def filename = file.getName().split("\\.")[0]
+        
+    	ant.wldeploy(action: 'deploy',
+				source: file,
+				name: filename,
+				adminurl: config.wls.adminurl,
+				user: config.wls.user,
+				password: config.wls.password,
+				upload: config.wls.upload,
+				targets: config.wls.targets,
+				verbose: config.wls.verbose,
+				debug: config.wls.debug
+		)
+	}
+}
+

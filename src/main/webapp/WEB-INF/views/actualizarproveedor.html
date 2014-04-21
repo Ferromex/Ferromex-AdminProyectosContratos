@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Actualizar Proveedor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedor</h2>
+			<div class="clear"></div>
+				<form method="post">
+				  <table>
+				  	<thead>
+				  		<tr>
+					  		<th th:text="#{thead.proveedores}">Proveedores</th>
+					  	</tr>	
+				  	</thead>
+					<tbody>
+					    <tr>   
+					       <td th:text="#{thead.razonSocial}">RazonSoc</td>  
+						   <td align="left"><input type="text" name="razonSocial" th:value="${proveedor.razonSocial}" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.domFiscal}">domFiscal</td>  
+						   <td align="left"><input type="text" name="domFiscal" th:value="${proveedor.domicilioFiscal}" required="required"/></td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.domCorresp}">domCorresp</td>
+					       <td align="left"><input type="text" name="domCorrespondencia" th:value="${proveedor.domCorrespondencia}" required="required"/></td>  
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.regAbast}">regAbast</td> 
+					       <td align="left"><input type="number" name="registroAbastecimientos" th:value="${proveedor.registroAbast}"/></td> 
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.regProy}">regProy</td> 
+					       <td align="left"><input type="number" name="registroProyectos" th:value="${proveedor.registroProyectos}"/></td> 
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.zona}">zona</td>  
+						   <td align="left">
+						   	<select id="zonaProveedor" name="zonaProveedor" required="required">
+							  <option th:each="zona : ${zonas}" 
+							          th:value="${zona.idZona}"
+							          th:text="${zona.zona}" 
+							          th:selected="${zona.idZona == proveedor.zonap.idZona}">Zona del Proveedor</option>
+							</select>
+						   </td>
+					    </tr>
+					    <tr>   
+					       <td th:text="#{thead.obras}">obrasProv</td>
+					       <td>
+								<span th:each="tobra : ${tobrasProv}">
+									<label th:text="${tobra.obra}">Obra Proveedor</label>
+									<input type="checkbox" name="obraProveedor" th:value="${tobra.idObra}" 
+									/><!-- th:checked="${tobra.idObra == proveedor.obras.idObra}" -->
+								</span>
+					       </td>
+					    </tr>
+					</tbody>
+				  </table>
+				  	<input id="idProveedor" name="idProveedor" type="hidden" th:value="${proveedor.idProveedor}"/>
+				    <p><input type="submit" value="Submit" th:attr="value=#{boton.actualizar}" formaction="actualizarproveedor.htm"/></p>
+				</form>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+
+</body>
+</html>

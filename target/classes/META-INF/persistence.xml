@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	<persistence-unit name="PUProyectos" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/ProyectosDS</jta-data-source>
+		<class>com.ferromex.proyectos.dominio.Concurso</class>
+		<class>com.ferromex.proyectos.dominio.Contacto</class>
+		<class>com.ferromex.proyectos.dominio.DocumentoOficial</class>
+		<class>com.ferromex.proyectos.dominio.Empresa</class>
+		<class>com.ferromex.proyectos.dominio.EstatusProyecto</class>
+		<class>com.ferromex.proyectos.dominio.Responsable</class>
+		<class>com.ferromex.proyectos.dominio.TipoConcurso</class>
+		<class>com.ferromex.proyectos.dominio.TipoDocumento</class>
+		<class>com.ferromex.proyectos.dominio.Division</class>
+		<class>com.ferromex.proyectos.dominio.ObrasProveedor</class>
+		<class>com.ferromex.proyectos.dominio.OrigenProyecto</class>
+		<class>com.ferromex.proyectos.dominio.Proveedor</class>
+		<class>com.ferromex.proyectos.dominio.Proyecto</class>
+		<class>com.ferromex.proyectos.dominio.TipoObras</class>
+		<class>com.ferromex.proyectos.dominio.Zona</class>
+		<properties>
+	         <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+	         <property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>

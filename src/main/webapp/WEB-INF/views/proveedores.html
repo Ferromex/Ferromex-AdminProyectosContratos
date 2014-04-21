@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Responsables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedores</h2>
+			<div class="clear"></div>
+			<div class="info">	
+				<table>  
+					<thead>  
+					   <tr>  
+					       <th th:text="#{thead.idProveedor}">IdProveedor</th>
+					       <th th:text="#{thead.razonSocial}">RazonSoc</th>  
+					       <th th:text="#{thead.domFiscal}">domFiscal</th>  
+					       <th th:text="#{thead.domCorresp}">domCorresp</th>  
+					       <th th:text="#{thead.regAbast}">regAbast</th>  
+					       <th th:text="#{thead.regProy}">regProy</th>  
+					       <th th:text="#{thead.zona}">zona</th>  
+					       <th th:text="#{thead.obras}">obras</th>
+					       <th th:text="#{thead.contactos}">contactos</th>  
+					   </tr>  
+					</thead>  
+					<tbody>  
+					   <tr th:each="prov : ${proveedores}"> 
+					   	   <td th:text="${#numbers.formatInteger(prov.idProveedor,3)}"></td> 
+					       <td th:text="${prov.razonSocial}">razonSocial</td>
+					       <td th:text="${prov.domicilioFiscal}">dom Fiscal</td>
+					       <td th:text="${prov.domCorrespondencia}">dom Corresp</td>
+					       <td th:text="${prov.registroAbast}"> reg Abast</td>
+					       <td th:text="${prov.registroProyectos}">reg proy</td>
+					       <td th:text="${prov.zonap.zona}">zona</td>
+					       <td>
+					       	<span th:each="obrap : ${prov.obras}">
+					       		<div><span th:each="tobra : ${tipoObras}">
+									<span th:if="${obrap.idObra} == ${tobra.idObra}" th:text="${tobra.obra}">Obras</span>
+								</span></div>
+						    </span>   	
+					       </td>
+						   <td>
+								<a href="#" th:href="@{/contactos.htm(idProveedor=${prov.idProveedor})}">Contactos</a>
+						   </td>					       
+						   <td>
+						   		<!-- a href="#" th:href="@{/eliminarproveedor.htm(idProveedor=${prov.idProveedor})}">Eliminar</a--> 
+								<a href="#" th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}">Editar</a>
+						   </td>					       
+					   </tr> 
+					</tbody>  
+				</table>
+				
+				
+				<div class="clear"></div>
+				<div class="clear"><a th:href="@{/nuevoproveedor.htm}">Nuevo Proveedor</a></div>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	  	
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

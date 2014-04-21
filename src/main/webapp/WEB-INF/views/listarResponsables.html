@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Responsables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.responsables}">Responsables</h2>
+			<div class="clear"></div>
+			<div class="info">	
+				<table>  
+					<thead>  
+					   <tr>  
+					       <th th:text="#{thead.idResp}">Id Responsable</th>  
+					       <th th:text="#{thead.nombre}">Nombre</th>
+					       <th th:text="#{thead.apPaterno}">Apellido Paterno</th>
+					       <th th:text="#{thead.apMaterno}">Apellido Materno</th>  
+					   </tr>  
+					</thead>  
+					<tbody>  
+					   <tr th:each="resp : ${responsables}">  
+					       <td th:text="${resp.idResponsable}"></td>
+					       <td th:text="${resp.nombreResponsable}"></td>  
+					       <td th:text="${resp.ApPaternoResp}"></td>
+					       <td th:text="${resp.ApMaternoResp}"></td>
+					   </tr> 
+					</tbody>  
+				</table>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+</body>
+</html>

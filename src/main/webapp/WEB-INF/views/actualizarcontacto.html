@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Actualizar Contacto</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
+	rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 th:text="#{etiq.cabecero.contactos}">Contactos</h2>
+			<div class="clear"></div>
+				<form method="post">
+				  <table>
+				  	<thead>
+				  		<tr>
+					  		<th th:text="#{thead.contactos}">Contactos</th>
+					  	</tr>	
+				  	</thead>
+					<tbody>
+						<tr>    
+					       <td th:text="#{thead.idProveedor}">Proveedor</td>
+						   <td align="left">
+						   	<select id="proveedor" name="proveedor" required="required">
+							  <option th:each="prov : ${proveedores}" 
+							          th:value="${prov.idProveedor}"
+							          th:text="${prov.razonSocial}"
+							          th:selected="${prov.idProveedor == contacto.proveedor.idProveedor}">Proveedor</option>
+							</select>
+						   </td>						
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.nombre}">Nombre</td>  
+						   <td align="left"><input type="text" name="nombreContacto" th:value="${contacto.nombreContacto}" required="required"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.apPaterno}">ApellidoP</td>  
+						   <td align="left"><input type="text" name="apellidoPaterno" th:value="${contacto.apPaterno}" required="required"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.apMaterno}">ApellidoM</td>  
+						   <td align="left"><input type="text" name="apellidoMaterno" th:value="${contacto.apMaterno}" required="required"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.email}">Email</td>  
+						   <td align="left"><input type="email" name="email" th:value="${contacto.email}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.email2}">Email</td>  
+						   <td align="left"><input type="email" name="email2" th:value="${contacto.email2}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.email3}">Email</td>  
+						   <td align="left"><input type="email" name="email3" th:value="${contacto.email3}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.email4}">Email</td>  
+						   <td align="left"><input type="email" name="email4" th:value="${contacto.email4}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.telOficina}">TelOficina</td>  
+						   <td align="left"><input type="text" name="telefonoOficina" th:value="${contacto.telOficina}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.movil1}">Movil1</td>  
+						   <td align="left"><input type="text" name="movil1" th:value="${contacto.movil1}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.movil2}">Movil2</td>
+						   <td align="left"><input type="text" name="movil2" th:value="${contacto.movil2}"/></td>
+						</tr>
+						<tr>    
+					       <td th:text="#{thead.principal}">Principal</td>  
+						   <td align="left">
+	      					   <label th:text="#{thead.principalSi}">Si</label>
+					           <input type="radio" name="principal" id="Y" th:value="Y" checked="checked"/>
+				               <label th:text="#{thead.principalNo}">No</label>
+				               <input type="radio" name="principal" id="N" th:value="N" />
+      					   </td>
+					   </tr>  
+					</tbody>
+				  </table>
+				  	<input id="idContacto" name="idContacto" type="hidden" th:value="${contacto.idContacto}"/>
+				    <p><input type="submit" value="Actualizar" th:attr="value=#{boton.actualizar}" formaction="actualizarproveedor.htm"/>
+				    <input type="submit" value="Cancelar" th:attr="value=#{boton.cancelar}" formaction="contactos.htm"/></p>
+				</form>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>			  
+	<div th:include="layout :: foot"></div>
+</div>
+
+</body>
+</html>
