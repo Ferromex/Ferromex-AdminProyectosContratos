@@ -17,29 +17,29 @@
 			<h2 th:text="#{etiq.cabecero.proyectos}">proyectos</h2>
 			<div class="clear"></div>
 			<div class="info">	
-				<table>  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
 					<thead>  
 					   <tr>  
-					       <th th:text="#{thead.idProyecto}">idProyecto</th>
-					       <th th:text="#{thead.idCarpeta}">idCarpeta</th>  
-					       <th th:text="#{thead.empresa}">empresa</th>  
-					       <th th:text="#{thead.nombreProyecto}">nombreProyecto</th>  
-					       <th th:text="#{thead.nombreCorto}">nombreCorto</th>  
-					       <th th:text="#{thead.tipoObra}">tipoObra</th>  
-					       <th th:text="#{thead.origenProyecto}">origenProyecto</th>  
-					       <th th:text="#{thead.division}">division</th>
-					       <th th:text="#{thead.fechaRecepcion}">fechaRecepcion</th>  
-					       <th th:text="#{thead.presupuesto}">presupuesto</th> 
-					       <th th:text="#{thead.elementoPEP}">elementoPEP</th> 
-					       <th th:text="#{thead.centroCostos}">centroCostos</th> 
-					       <th th:text="#{thead.solicitudInversion}">solicitudInversion</th> 
-					       <th th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</th> 
-					       <th th:text="#{thead.solicitudSAP}">solicitudSAP</th> 
-					       <th th:text="#{thead.inicioEstimado}">inicioEstimado</th> 
-					       <th th:text="#{thead.finEstimado}">finEstimado</th> 
-					       <th th:text="#{thead.duracionProy}">duracionProy</th> 
-					       <th th:text="#{thead.inicioReal}">inicioReal</th> 
-					       <th th:text="#{thead.finReal}">finReal</th> 
+					       <th th:text="#{thead.idProyecto}" class="table-filterable table-sortable:default" width="10px" align="left">idProyecto</th>
+					       <th th:text="#{thead.idCarpeta}" class="table-filterable table-sortable:default" width="10px" align="left">idCarpeta</th>  
+					       <th th:text="#{thead.empresa}" class="table-filterable table-sortable:default" width="100px" align="left">empresa</th>  
+					       <th th:text="#{thead.nombreProyecto}" class="table-sortable:default" width="100px" align="left">nombreProyecto</th>  
+					       <th th:text="#{thead.nombreCorto}" class="table-sortable:default" width="100px" align="left">nombreCorto</th>  
+					       <th th:text="#{thead.tipoObra}" class="table-filterable table-sortable:default" width="50px" align="left">tipoObra</th>  
+					       <th th:text="#{thead.origenProyecto}" class="table-filterable table-sortable:default" width="50px" align="left">origenProyecto</th>  
+					       <th th:text="#{thead.division}" class="table-filterable table-sortable:default" width="50px" align="left">division</th>
+					       <th th:text="#{thead.fechaRecepcion}" class="table-filterable table-sortable:date" width="50px" align="left">fechaRecepcion</th>  
+					       <th th:text="#{thead.presupuesto}" class="table-sortable:default">presupuesto</th> 
+					       <th th:text="#{thead.elementoPEP}" class="table-filterable table-sortable:default" width="50px" align="left">elementoPEP</th> 
+					       <th th:text="#{thead.centroCostos}" class="table-filterable table-sortable:default" width="50px" align="left">centroCostos</th> 
+					       <th th:text="#{thead.solicitudInversion}" class="table-filterable table-sortable:default" width="50px" align="left">solicitudInversion</th> 
+					       <th th:text="#{thead.fechaEntregaSAI}" class="table-filterable table-sortable:date" width="50px" align="left">fechaEntregaSAI</th> 
+					       <th th:text="#{thead.solicitudSAP}" class="table-sortable:default" width="50px" align="left">solicitudSAP</th> 
+					       <th th:text="#{thead.inicioEstimado}" class="table-filterable table-sortable:date" width="50px" align="left">inicioEstimado</th> 
+					       <th th:text="#{thead.finEstimado}" class="table-filterable table-sortable:date" width="50px" align="left">finEstimado</th> 
+					       <th th:text="#{thead.duracionProy}" class="table-filterable table-sortable:default" width="50px" align="left">duracionProy</th> 
+					       <th th:text="#{thead.inicioReal}" class="table-filterable table-sortable:default" width="50px" align="left">inicioReal</th> 
+					       <th th:text="#{thead.finReal}" class="table-filterable table-sortable:default" width="50px" align="left">finReal</th> 
 					   </tr>  
 					</thead>  
 					<tbody>  
@@ -60,7 +60,7 @@
 					       <td>
 					       	<span th:each="tobra : ${tobras}">
 								<span th:if="${tobra.idObra} == ${proy.tipoObra}" th:text="${tobra.obra}">tipoObra</span>
-						    </span>   	
+						    </span>
 					       </td>
 					       <td>
 					       	<span th:each="origenp : ${origen}">
@@ -86,6 +86,45 @@
 					       <td th:text="${proy.finReal}">finReal</td> 
 					   </tr> 
 					</tbody>  
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="table-page:previous" style="cursor:pointer;">
+								&lt; &lt; Anterior
+							</td>
+							<td colspan="18" style="text-align:center;">
+								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
+							</td>
+							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
+						</tr>
+						<tr>
+							<td colspan="20"><span id="t1filtercount">
+								</span>&nbsp;de <span id="t1allcount">
+								</span>&nbsp;registros
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 				<div class="clear"></div>
 				<div class="clear"><a th:href="@{/nuevoproyecto.htm}">Nuevo Proyecto</a></div>

@@ -17,13 +17,13 @@
 			<h2 th:text="#{etiq.cabecero.responsables}">Responsables</h2>
 			<div class="clear"></div>
 			<div class="info">	
-				<table>  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
 					<thead>  
 					   <tr>  
-					       <th th:text="#{thead.idResp}">Id Responsable</th>  
-					       <th th:text="#{thead.nombre}">Nombre</th>
-					       <th th:text="#{thead.apPaterno}">Apellido Paterno</th>
-					       <th th:text="#{thead.apMaterno}">Apellido Materno</th>  
+					       <th th:text="#{thead.idResp}" class="table-sortable:default" width="10px" align="left">Id Responsable</th>  
+					       <th th:text="#{thead.nombre}" class="table-sortable:default" width="100px" align="left">Nombre</th>
+					       <th th:text="#{thead.apPaterno}" class="table-sortable:default" width="100px" align="left">Apellido Paterno</th>
+					       <th th:text="#{thead.apMaterno}" class="table-sortable:default" width="100px" align="left">Apellido Materno</th>  
 					   </tr>  
 					</thead>  
 					<tbody>  
@@ -34,6 +34,29 @@
 					       <td th:text="${resp.ApMaternoResp}"></td>
 					   </tr> 
 					</tbody>  
+<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="table-page:previous" style="cursor:pointer;">
+								&lt; &lt; Anterior
+							</td>
+							<td colspan="2" style="text-align:center;">
+								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
+							</td>
+							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
+						</tr>
+						<tr>
+							<td colspan="4"><span id="t1filtercount">
+								</span>&nbsp;de <span id="t1allcount">
+								</span>&nbsp;registros
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			 </div>
 		</div>

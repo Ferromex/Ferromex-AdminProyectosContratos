@@ -17,7 +17,7 @@
 			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedores</h2>
 			<div class="clear"></div>
 				<form method="post">
-				  <table>
+				  <table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">
 				  	<thead>
 				  		<tr>
 					  		<th th:text="#{thead.proveedores}">Proveedores</th>
@@ -64,6 +64,13 @@
 					       </td>
 					    </tr>
 					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 				  </table>
 				    <p><input type="submit" value="Submit" th:attr="value=#{boton.enviar}" formaction="nuevoproveedor.htm"/></p>
 				</form>

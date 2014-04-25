@@ -17,20 +17,20 @@
 			<h2 th:text="#{etiq.cabecero.docs}">Documentos Oficiales</h2>
 			<div class="clear"></div>
 			<div class="info">	
-				<table id="documentosGBIP">  
+				<table id="documentosGBIP" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
 					<thead>  
 					   <tr>  
-							<th th:text="#{thead.idDoc}">IdDocumento</th>
-							<th th:text="#{thead.folio}">Folio</th>
-							<th th:text="#{thead.empresa}">Empresa</th>
-							<th th:text="#{thead.fecha}">Fecha</th>
-							<th th:text="#{thead.tipoDoc}">Tipo</th>
-							<th th:text="#{thead.tipoContrato}">TipoContrato</th>
-							<th th:text="#{thead.proveedor}">Proveedor</th>
-							<th th:text="#{thead.dirigido}">Dirigido A</th>
-							<th th:text="#{thead.proyecto}">Proyecto</th>
-							<th th:text="#{thead.elaboro}">Elaboro</th>
-							<th th:text="#{thead.observaciones}">Observaciones</th>
+							<th th:text="#{thead.idDoc}" class="table-sortable:default" width="10px" align="left" >IdDocumento</th>
+							<th th:text="#{thead.folio}" class="table-sortable:default" width="50px" align="left" >Folio</th>
+							<th th:text="#{thead.empresa}" class="table-filterable table-sortable:default" width="100px" align="left">Empresa</th>
+							<th th:text="#{thead.fecha}" class="table-filterable table-sortable:date" width="30px" align="left">Fecha</th>
+							<th th:text="#{thead.tipoDoc}" class="table-filterable table-sortable:default" width="50px" align="left">Tipo</th>
+							<th th:text="#{thead.tipoContrato}" class="table-filterable table-sortable:default" width="50px" align="left">TipoContrato</th>
+							<th th:text="#{thead.proveedor}" class="table-filterable table-sortable:default" width="100px" align="left">Proveedor</th>
+							<th th:text="#{thead.dirigido}" class="table-filterable table-sortable:default" width="100px" align="left">Dirigido A</th>
+							<th th:text="#{thead.proyecto}" class="table-filterable table-sortable:default" width="50px" align="left">Proyecto</th>
+							<th th:text="#{thead.elaboro}" class="table-filterable table-sortable:default" width="100px" align="left">Elaboro</th>
+							<th th:text="#{thead.observaciones}" >Observaciones</th>
 					   </tr>    
 					</thead>  
 					<tbody>  
@@ -73,6 +73,36 @@
 					       <td th:text="${docs.observaciones}"></td>
 					   </tr> 
 					</tbody>  
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="table-page:previous" style="cursor:pointer;">
+								&lt; &lt; Anterior
+							</td>
+							<td colspan="10" style="text-align:center;">
+								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
+							</td>
+							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
+						</tr>
+						<tr>
+							<td colspan="11"><span id="t1filtercount">
+								</span>&nbsp;de <span id="t1allcount">
+								</span>&nbsp;registros
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 				<a th:href="@{/nuevodocoficial.htm}">Nuevo Documento</a>
 			 </div>

@@ -18,7 +18,7 @@
 			<div class="clear"></div>
 			<div class="info">	
 			<form method="post" th:object="${concursoForm}">
-				<table>  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
 					<thead>
 						<tr>
 							<th colspan="5" align="center" th:text="${proyecto.nombreProyecto}">nombreProyecto</th>
@@ -60,8 +60,15 @@
 							<td th:text="${proyecto.fechEstCartaIntencion}"></td>
 					   </tr>
 				   </tbody>
+					<tfoot>
+						<tr>
+							<td colspan="8">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 				</table>
-				<table>  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
 					<thead>
 						<tr>
 							<th colspan="15" align="center" th:text="#{thead.gestion.concurso}">gestionConcurso</th>
@@ -105,9 +112,16 @@
 							<td th:text="${conc.fechVoBoGanador}"></td>
 						</tr>
 					</tbody>  
+					<tfoot>
+						<tr>
+							<td colspan="15">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			
-				<table> 
+				<table class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount"> 
 					<thead>
 						<tr>
 							<th colspan="14" align="center" th:text="#{thead.nuevo.concurso}">Nuevo Concurso</th>
@@ -148,6 +162,13 @@
 							<td><input type="date" name="fechaVoBoGanador"/></td>
 						</tr>
 					</tbody>  
+					<tfoot>
+						<tr>
+							<td colspan="14">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 				  	<input type="submit" value="Actualiza" th:attr="value=#{boton.actualizar}" formaction="concursos.htm"/>
 				  	<input type="submit" value="Cancela" th:attr="value=#{boton.cancelar}" formaction="proyectos.htm"/>

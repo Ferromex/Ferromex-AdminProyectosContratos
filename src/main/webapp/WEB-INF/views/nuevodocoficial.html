@@ -15,7 +15,7 @@
 	  <div id="principal">	
 		<div class="articulo">
 				<form method="post" action="#">
-				  <table>
+				  <table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">
 				  	<thead>
 				  		<tr>
 					  		<th th:text="#{thead.nombreTabla}">Nuevo Documento</th>
@@ -94,6 +94,13 @@
 						   <td align="left"><input type="text" name="observaciones" placeholder="Comentarios del documento"/></td>
 						</tr>
 					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 				  </table>
 				    <p><input type="submit" name="action" value="enviar" th:attr="value=Enviar" formaction="nuevodocoficial.htm"/> 
 				     <input type="submit" name="action" value="cancelar" th:attr="value=Cancelar" formaction="documentosoficiales.htm"/></p>

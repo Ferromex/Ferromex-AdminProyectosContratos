@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
+  <head>
+    <script type="text/javascript" src="/resources/js/table.js" th:src="@{/resources/js/table.js}"></script>
+	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
+  </head>
   <body>
-  
-  
-  
 	<div th:fragment="head">
 	   <div id="cabecera">	
 	   	  <h1 id="logo"> 
@@ -22,7 +21,6 @@
 	       </ul>
 	   </div>    
 	</div>
-
 <div th:fragment="left">
 	<div id="secundario">
 		<h3>Documentación</h3>
@@ -39,10 +37,8 @@
               <li><a href="#">Categoría 3</a></li>
            </ul>
         <div class="clear"></div>
-        
     </div>    
 </div>
-
 <div th:fragment="foot">
 	<div id="pie">
 	   <footer>
@@ -51,7 +47,5 @@
 	   </footer>	
    	</div>
 </div>
-  
   </body>
-  
 </html>

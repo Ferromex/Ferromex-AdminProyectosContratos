@@ -16,22 +16,23 @@
 		<div class="articulo">
 			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedores</h2>
 			<div class="clear"></div>
-			<div class="info">	
-				<table>  
-					<thead>  
-					   <tr>  
-					       <th th:text="#{thead.idProveedor}">IdProveedor</th>
-					       <th th:text="#{thead.razonSocial}">RazonSoc</th>  
-					       <th th:text="#{thead.domFiscal}">domFiscal</th>  
-					       <th th:text="#{thead.domCorresp}">domCorresp</th>  
-					       <th th:text="#{thead.regAbast}">regAbast</th>  
-					       <th th:text="#{thead.regProy}">regProy</th>  
-					       <th th:text="#{thead.zona}">zona</th>  
-					       <th th:text="#{thead.obras}">obras</th>
-					       <th th:text="#{thead.contactos}">contactos</th>  
+			<div class="info">
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+					<thead>
+					   <tr>
+					       <th th:text="#{thead.idProveedor}" class="table-filterable table-sortable:default" width="10px" align="left">IdProveedor</th>
+					       <th th:text="#{thead.razonSocial}" class="table-sortable:default" width="150px" align="left">RazonSoc</th>  
+					       <th th:text="#{thead.domFiscal}" class="table-sortable:default" width="150px" align="left">domFiscal</th>  
+					       <th th:text="#{thead.domCorresp}" class="table-sortable:default" width="150px" align="left">domCorresp</th>  
+					       <th th:text="#{thead.regAbast}" class="table-sortable:default" width="50px" align="left">regAbast</th>  
+					       <th th:text="#{thead.regProy}" class="table-sortable:default" width="50px" align="left">regProy</th>  
+					       <th th:text="#{thead.zona}" class="table-filterable table-sortable:default" width="50px" align="left">zona</th>  
+					       <th th:text="#{thead.obras}" class="table-filterable table-sortable:default" width="50px" align="left">obras</th>
+					       <th th:text="#{thead.contactos}" class="table-sortable:default" width="50px" align="left">contactos</th>
+					       <th th:text="#{thead.contactos}" width="50px" align="left"></th>   
 					   </tr>  
-					</thead>  
-					<tbody>  
+					</thead>
+					<tbody>
 					   <tr th:each="prov : ${proveedores}"> 
 					   	   <td th:text="${#numbers.formatInteger(prov.idProveedor,3)}"></td> 
 					       <td th:text="${prov.razonSocial}">razonSocial</td>
@@ -42,9 +43,11 @@
 					       <td th:text="${prov.zonap.zona}">zona</td>
 					       <td>
 					       	<span th:each="obrap : ${prov.obras}">
-					       		<div><span th:each="tobra : ${tipoObras}">
-									<span th:if="${obrap.idObra} == ${tobra.idObra}" th:text="${tobra.obra}">Obras</span>
-								</span></div>
+					       		<div>
+						       		<span th:each="tobra : ${tipoObras}">
+										<span th:if="${obrap.idObra} == ${tobra.idObra}" th:text="${tobra.obra}">Obras</span>
+									</span>
+								</div>
 						    </span>   	
 					       </td>
 						   <td>
@@ -53,12 +56,39 @@
 						   <td>
 						   		<!-- a href="#" th:href="@{/eliminarproveedor.htm(idProveedor=${prov.idProveedor})}">Eliminar</a--> 
 								<a href="#" th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}">Editar</a>
-						   </td>					       
-					   </tr> 
-					</tbody>  
+						   </td>
+					   </tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="table-page:previous" style="cursor:pointer;">
+								&lt; &lt; Anterior
+							</td>
+							<td colspan="8" style="text-align:center;">
+								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
+							</td>
+							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
+						</tr>
+						<tr>
+							<td colspan="10"><span id="t1filtercount">
+								</span>&nbsp;de <span id="t1allcount">
+								</span>&nbsp;registros
+							</td>
+						</tr>
+					</tfoot>
 				</table>
-				
-				
 				<div class="clear"></div>
 				<div class="clear"><a th:href="@{/nuevoproveedor.htm}">Nuevo Proveedor</a></div>
 			 </div>
