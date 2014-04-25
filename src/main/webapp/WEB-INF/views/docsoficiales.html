@@ -31,7 +31,6 @@
 							<th th:text="#{thead.proyecto}" class="table-filterable table-sortable:default" width="50px" align="left">Proyecto</th>
 							<th th:text="#{thead.elaboro}" class="table-filterable table-sortable:default" width="100px" align="left">Elaboro</th>
 							<th th:text="#{thead.observaciones}" >Observaciones</th>
-							<th ></th>
 					   </tr>    
 					</thead>  
 					<tbody>  
@@ -72,12 +71,10 @@
 					       	</span>	
 					       </td>
 					       <td th:text="${docs.observaciones}"></td>
-					       <td ></td>
 					   </tr> 
 					</tbody>  
 					<tfoot>
 						<tr>
-							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -94,7 +91,7 @@
 							<td class="table-page:previous" style="cursor:pointer;">
 								&lt; &lt; Anterior
 							</td>
-							<td colspan="11" style="text-align:center;">
+							<td colspan="9" style="text-align:center;">
 								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
 							</td>
 							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
