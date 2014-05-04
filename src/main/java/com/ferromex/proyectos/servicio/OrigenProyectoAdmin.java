@@ -9,6 +9,8 @@ public interface OrigenProyectoAdmin extends Serializable {
 
     public List<OrigenProyecto> obtenerOrigenProyecto();
 
+	public OrigenProyecto obtenerOrigenProyectoPorId(String origenProyectoId);
+
     
 }
 

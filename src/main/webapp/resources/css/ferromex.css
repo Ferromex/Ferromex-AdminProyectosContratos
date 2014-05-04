@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #F2F5FE url("../imagenes/fondo.gif") 0 0 repeat-x;
+  background: #F2F5FE url("../img/fondo.gif") 0 0 repeat-x;
   font: 70%/160% "verdana", sans-serif;
   color: #192666;
 }
@@ -50,6 +50,27 @@ ul, ol {
   margin: 1em 0 1em 2em;
   padding:0;
 }
+
+/* ---- Imagenes de botones ------------------------------------------------------------- */
+.clip               { position: relative; top: 0; left: 0; }
+.clipwrapper        { position: relative; height: 48px; width: 48px; }
+.pos-1              { clip:rect(525px 580px 580px 525px); }
+.pos-2              { clip:rect(0 96px 48px 48px); left: -48px; }
+.pos-3              { clip:rect(48px 48px 96px 0); top: -48px; }
+.pos-4              { clip:rect(48px 96px 96px 48px); top: -48px; left: -48px; }
+
+
+#boton-accion a {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-image: url("../img/icons/go_green_web_full.png") ;
+    margin-right: 8px;
+}
+.boton-detalle { background-position: -530px -530px; }
+.boton-editar { background-position: -155px -745px; }
+/* -------------------------------------------------------------------------- */
+
 
 /* ---- Layout ------------------------------------------------------------- */
 

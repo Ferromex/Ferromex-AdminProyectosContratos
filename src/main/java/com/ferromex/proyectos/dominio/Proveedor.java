@@ -36,20 +36,20 @@ public class Proveedor implements Serializable {
 
 	@Column(name = "PROV_DOM_FISCAL")
 	private String domicilioFiscal;
-	
+
 	@Column(name = "PROV_DOM_CORRESP")
 	private String domCorrespondencia;
-	
+
 	@Column(name = "PROV_REGISTRO_ABAST")
 	private Integer registroAbast; 
-	
+
 	@Column(name = "PROV_REGISTRO_PROY")
 	private Integer registroProyectos;
-	
+
 	@ManyToOne 
 	@JoinColumn(name = "ZPRO_ID") 
 	private Zona zonap; 
-	
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="proveedor", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<Contacto> contactos;
 
@@ -64,7 +64,7 @@ public class Proveedor implements Serializable {
 	public void setIdProveedor(Integer idProveedor) {
 		this.idProveedor = idProveedor;
 	}
-	
+
 	public String getRazonSocial() {
 		return razonSocial;
 	}
@@ -107,7 +107,6 @@ public class Proveedor implements Serializable {
 		this.zonap = zonap;
 	}
 
-	
 	public Set<Contacto> getContactos() {
 		return contactos;
 	}

@@ -29,5 +29,13 @@ public class OrigenProyectoDaoImpl implements OrigenProyectoDAO {
     	logger.info(" - - -  Array OrigenProyecto vacio - - - " +listaOrigenProyecto.isEmpty());
         return listaOrigenProyecto;
 	}
+    
+    @Transactional(readOnly = true)
+	public OrigenProyecto obtenerOrigenProyectoPorId(String origenProyectoId ) {
+    	OrigenProyecto origenProyecto = (OrigenProyecto)em.createQuery
+    			("select p from " + OrigenProyecto.class.getName() +" p where p.origenProyectoId = " + origenProyectoId).getSingleResult();
+        return origenProyecto;
+	}
+    
 }
 

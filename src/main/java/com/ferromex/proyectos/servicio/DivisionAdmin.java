@@ -9,6 +9,8 @@ public interface DivisionAdmin extends Serializable {
 
     public List<Division> obtenerDivisiones();
 
+	public Division obtenerDivisionPorId(String idDivision);
+
     
 }
 

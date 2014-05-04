@@ -8,4 +8,6 @@ public interface TipoObraDAO {
 
     public List<TipoObras> obtenerListaTipoObrasProveedores();
     
+    public TipoObras obtenerTipoObraPorIdObra(Integer idObra);
+
 }

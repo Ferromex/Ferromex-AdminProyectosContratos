@@ -7,6 +7,7 @@ import com.ferromex.proyectos.dominio.Division;
 public interface DivisionDAO {
 
     public List<Division> obtenerListaDivisiones();
+    public Division obtenerDivisionPorId(String idDivision);
 
 }
 

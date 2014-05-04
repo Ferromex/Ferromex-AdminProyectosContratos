@@ -10,7 +10,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ferromex.proyectos.dominio.Division;
+import com.ferromex.proyectos.dominio.OrigenProyecto;
 import com.ferromex.proyectos.dominio.Proyecto;
+import com.ferromex.proyectos.dominio.TipoObras;
 import com.ferromex.proyectos.forma.ProyectoForm;
 import com.ferromex.proyectos.servicio.*;
 
@@ -89,6 +92,23 @@ public class ProyectoController {
 	        return "redirect:/proyectos.htm";
 	    }
 
+		
+		@RequestMapping(value="/detalleproyecto.htm", method = RequestMethod.GET)
+	    public String detalleProyectoSubmit(@RequestParam(value="idProyecto")Integer idProy, Model model)
+	    {
+	    	logger.info(" - - -  Controller Detalle Proyecto  On Submit - - - ");
+	    	Proyecto proyecto = this.proyectoAdmin.consultaProyectoPorIdProyecto(idProy);
+	    	TipoObras tipoObra = this.tipoObrasAdmin.obtenerTipoObraPorIdObra(proyecto.getTipoObra());
+	    	OrigenProyecto origenProyecto = this.origenProyectoAdmin.obtenerOrigenProyectoPorId( Integer.toString(proyecto.getOrigenProyecto()));
+	    	Division division = this.divisionAdmin.obtenerDivisionPorId( Integer.toString(proyecto.getDivision()) );
+	    	model.addAttribute("proyecto", proyecto);
+	    	model.addAttribute("tipoObra", tipoObra);
+	    	model.addAttribute("origenProyecto", origenProyecto);
+	    	model.addAttribute("division", division);
+	        return "detalleproyecto";
+	    }
+		
+		
 		@RequestMapping(value="/registrarFechas.htm", method=RequestMethod.GET)
 		public String registrarFechas(@RequestParam(value="idProyecto")Integer idProy, Model model,
 				RedirectAttributes redirectAttrs){

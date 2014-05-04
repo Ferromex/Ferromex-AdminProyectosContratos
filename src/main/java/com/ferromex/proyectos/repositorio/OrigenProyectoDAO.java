@@ -7,6 +7,8 @@ import com.ferromex.proyectos.dominio.OrigenProyecto;
 public interface OrigenProyectoDAO {
 
     public List<OrigenProyecto> obtenerListaOrigenProyecto();
+    
+    public OrigenProyecto obtenerOrigenProyectoPorId(String origenProyectoId );
 
 }
 

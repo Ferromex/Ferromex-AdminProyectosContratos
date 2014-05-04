@@ -28,5 +28,13 @@ public class TipoObraDaoImpl implements TipoObraDAO {
     	logger.info(" - - -  Array Tipo Obra vacio - - - " +listObras.isEmpty());
         return listObras;
 	}
+    
+    
+    @Transactional(readOnly = true)
+	public TipoObras obtenerTipoObraPorIdObra(Integer idObra) {
+    	TipoObras listObras = (TipoObras)em.createQuery("select p from " + TipoObras.class.getName() +" p where p.idObra = "+ idObra +"").getSingleResult();
+        return listObras;
+	}
+    
 }
 

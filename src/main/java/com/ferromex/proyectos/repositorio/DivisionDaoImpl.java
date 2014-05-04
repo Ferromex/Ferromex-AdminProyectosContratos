@@ -29,4 +29,14 @@ public class DivisionDaoImpl implements DivisionDAO {
     	logger.info(" - - -  Array Divisiones vacio - - - " +listaDivisiones.isEmpty());
         return listaDivisiones;
 	}
+    
+    @Transactional(readOnly = true)
+	public Division obtenerDivisionPorId(String idDivision) {
+    	Division division= (Division)em.createQuery
+    			("select p from " + Division.class.getName() +" p where p.idDivision=" + idDivision)
+    			.getSingleResult();
+        return division;
+	}
+    
+
 }

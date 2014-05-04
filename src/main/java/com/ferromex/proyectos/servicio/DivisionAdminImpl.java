@@ -25,5 +25,10 @@ public class DivisionAdminImpl implements DivisionAdmin{
 		logger.info("- - - Obtener Divisiones - - - ");
 		return this.divisionDao.obtenerListaDivisiones();
 	}
+	
+	@Override
+	public Division obtenerDivisionPorId(String idDivision){
+		return this.divisionDao.obtenerDivisionPorId(idDivision);
+	}
 
 }

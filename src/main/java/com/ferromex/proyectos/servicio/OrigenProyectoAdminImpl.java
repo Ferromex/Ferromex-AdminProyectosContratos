@@ -26,4 +26,10 @@ public class OrigenProyectoAdminImpl implements OrigenProyectoAdmin{
 		return this.origenProyectoDao.obtenerListaOrigenProyecto();
 	}
 
+	@Override
+	public OrigenProyecto obtenerOrigenProyectoPorId(String origenProyectoId) {
+		logger.info("- - - Obtener OrigenProyecto - - - ");
+		return this.origenProyectoDao.obtenerOrigenProyectoPorId(origenProyectoId);
+	}
+	
 }

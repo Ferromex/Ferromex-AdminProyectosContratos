@@ -30,6 +30,12 @@ public class TipoObraAdminImpl implements TipoObraAdmin{
 		logger.info("- - - Obtener Tipo de Obras - - - ");
 		return tipoObraDao.obtenerListaTipoObrasProveedores();
 	}
+	
+	@Override
+	public TipoObras obtenerTipoObraPorIdObra(Integer idObra) {
+		logger.info("- - - Obtener Tipo de Obras - - - ");
+		return tipoObraDao.obtenerTipoObraPorIdObra(idObra);
+	}
 
 }
 
