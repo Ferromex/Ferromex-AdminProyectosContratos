@@ -1,7 +1,66 @@
+/*************************Form Table Design*****************************/
+table.inner {
+	border:none;
+	border-collapse:collapse;
+}
+table.inner th, table.inner td {
+	border:none;
+	border-bottom-width 0px;
+	padding: 1px 1px 1px 1px;
+	margin:0px 0px 0px 0px;
+	border-width: 0px;
+}
+
+
+/*************************Form Table Design*****************************/
+table.form {
+	border:1px solid black;
+	border-collapse:collapse;
+	color: #243A03;
+	width: 750px;
+}
+table.form th, table.form td {
+	border:1px solid #aaaaaa;
+	padding: 2px 5px 2px 15px;
+}
+/*Header de la tabla*/
+table.form thead th {
+	background-color:#B0DC71;
+	color: #243A03;
+	width: 750px;
+}
+table.form tfoot td {
+	background-color:#B0DC71;
+	color: #243A03;
+}
+table.form tr.tbody_header {
+	font-weight:bold;
+	text-align:center;
+	background-color:#9DC660;
+	color: #243A03;
+}
+table.form tr {
+	background-color:#C3E294;
+	color: #243A03;
+}
+table.form a.pagelink {
+	padding-left:0px;
+	padding-right:0px;
+	border:1px solid #666666;
+	margin:0px 5px 0px 5px;
+}
+table.form a.currentpage {
+	background-color:#C3E294;
+	color: #243A03;
+}
+/***********************************************************************/
+
+
 table.default {
 	border:1px solid black;
 	border-collapse:collapse;
 	color: #243A03;
+	width: 895px;
 }
 table.default th, table.default td {
 	border:1px solid #aaaaaa;

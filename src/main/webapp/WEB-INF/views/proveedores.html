@@ -4,9 +4,8 @@
 	<title>Responsables</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
-	rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
 <div id="contenedor">
@@ -30,8 +29,9 @@
 					       <th th:text="#{thead.regProy}" class="table-sortable:default" width="50px" align="left">regProy</th>  
 					       <th th:text="#{thead.zona}" class="table-filterable table-sortable:default" width="50px" align="left">zona</th>  
 					       <th th:text="#{thead.obras}" class="table-filterable table-sortable:default" width="50px" align="left">obras</th>
-					       <th th:text="#{thead.contactos}" class="table-sortable:default" width="50px" align="left">Contactos</th>
-					       <th width="50px" align="left">Editar</th>   
+					       <th th:text="#{thead.contactos}"  width="50px" align="left">contactos</th>
+					       <th th:text="#{thead.detalle}"    width="50px" align="left">detalle</th>
+					       <th th:text="#{thead.editar}"     width="50px" align="left">editar</th>   
 					   </tr>  
 					</thead>
 					<tbody>
@@ -56,17 +56,14 @@
 					       </td>
 						   <td>
 								<a href="#" th:href="@{/contactos.htm(idProveedor=${prov.idProveedor})}">Contactos</a>
-						   </td>					       
+						   </td>
+						   <td> 
+								<a href="#" th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}">Detalle</a>
+						   </td>
 						   <td>
 						   		<!-- a href="#" th:href="@{/eliminarproveedor.htm(idProveedor=${prov.idProveedor})}">Eliminar</a--> 
-								
 								<a href="#" th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}">Editar</a>
-								
-								<!--
-							    <div id="boton-accion">
-							    	<a href='#' th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}" class="boton-editar" ></a>
-							    </div>
-							    -->
+								<!--<div id="boton-accion"><a href='#' th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}" class="boton-editar" ></a></div>-->
 						   </td>
 					   </tr>
 					</tbody>
@@ -75,13 +72,13 @@
 							<td class="table-page:previous" style="cursor:pointer;" colspan="2">
 								&lt; &lt; Anterior
 							</td>
-							<td colspan="4" style="text-align:center;">
+							<td colspan="5" style="text-align:center;">
 								Paginaci&oacute;n <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
 							</td>
 							<td class="table-page:next" style="cursor:pointer;" colspan="2">Pr&oacute;ximo &gt; &gt;</td>
 						</tr>
 						<tr>
-							<td colspan="8"><span id="t1filtercount">
+							<td colspan="9"><span id="t1filtercount">
 								</span>&nbsp;de <span id="t1allcount">
 								</span>&nbsp;registros
 							</td>

@@ -1,106 +1,161 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Nuevo Contacto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
-	rel="stylesheet" type="text/css" media="all"></link>
+<title>Nuevo Contacto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../../resources/css/ferromex.css"
+	th:href="@{/resources/css/ferromex.css}" rel="stylesheet"
+	type="text/css" media="all"></link>
+<link href="../../resources/css/table.css"
+	th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css"
+	media="all"></link>
+<link href="../../resources/css/tab.css"
+	th:href="@{/resources/css/tab.css}" rel="stylesheet" type="text/css"
+	media="all"></link>
 </head>
 <body>
-<div id="contenedor">
-<div th:include="layout :: head"></div>
-	<div id="contenido">
-	  <div id="principal">	
-		<div class="articulo">
-			<h2 th:text="#{thead.contactos}">Contactos</h2>
+	<div id="contenedor">
+		<div th:include="layout :: head"></div>
+		<div id="contenido">
+			<div id="principal">
+				<div class="articulo">
+					<h2 th:text="#{thead.contactos}">Contactos</h2>
+					<form method="post" action="#" id="nuevoContactoForm">
+						<div id="wrapper">
+							<div id="tabContainer">
+								    <div id="tabs">
+								      <ul>
+								        <li id="tabHeader_1">Datos Generales</li>
+								        <li id="tabHeader_2">Correos Electronicos</li>
+								        <li id="tabHeader_3">Telefonos</li>
+								      </ul>
+								    </div>
+								<div id="tabscontent">
+									<div class="tabpage" id="tabpage_1">
+									    <div class="clear"></div>
+										<table id="t1" class="inner">
+											<thead>
+												<tr>
+													<th th:text="#{thead.contactos}" colspan="2">Nuevo Contacto</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td th:text="#{thead.idProveedor}">Proveedor</td>
+													<td align="left"><select id="proveedor"
+														name="proveedor" style="width: 200px">
+															<option th:each="prov : ${proveedores}"
+																th:value="${prov.idProveedor}"
+																th:text="${prov.razonSocial}">Proveedor</option>
+													</select></td>
+												</tr>
+												<tr>
+													<td th:text="#{thead.nombre}">Nombre</td>
+													<td align="left"><input type="text"
+														name="nombreContacto" placeholder="Nombre del Contacto"
+														required="required" width="200px" size="29" /></td>
+												</tr>
+												<tr>
+													<td th:text="#{thead.apPaterno}">ApellidoP</td>
+													<td align="left"><input type="text"
+														name="apellidoPaterno" placeholder="Apellido Paterno"
+														required="required" size="29" /></td>
+												</tr>
+												<tr>
+													<td th:text="#{thead.apMaterno}">ApellidoM</td>
+													<td align="left"><input type="text"
+														name="apellidoMaterno" placeholder="Apellido Materno"
+														required="required" size="29" /></td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"><span>&nbsp;</span></td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									<div class="tabpage" id="tabpage_2">
+									<div class="clear"></div>
+										<table class="inner">
+											<thead>
+												<tr>
+													<th th:text="#{thead.correoElectronico}" colspan="2">Correos Electronicos</th>
+												</tr>
+											</thead>
+											<tr>
+												<td th:text="#{thead.email}">Email</td>
+												<td align="left"><input type="email" name="email"
+													placeholder="contacto@partner.com" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.email2}">Email</td>
+												<td align="left"><input type="email" name="email2"
+													placeholder="alterno1@partner.com" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.email3}">Email</td>
+												<td align="left"><input type="email" name="email3"
+													placeholder="alterno2@partner.com" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.email4}">Email</td>
+												<td align="left"><input type="email" name="email4"
+													placeholder="alterno3@partner.com" /></td>
+											</tr>
+										</table>
+									</div>
+									<div class="tabpage" id="tabpage_3">
+									<div class="clear"></div>
+										<table class="inner">
+											<thead>
+												<tr>
+													<th th:text="#{thead.telefonos}" colspan="2">Telefonos</th>
+												</tr>
+											</thead>
+											<tr>
+												<td th:text="#{thead.telOficina}">TelOficina</td>
+												<td align="left"><input type="text"
+													name="telefonoOficina" placeholder="Telefono a 10 dígitos"
+													required="required" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.movil1}">Movil1</td>
+												<td align="left"><input type="text" name="movil1"
+													placeholder="Telefono a 10 dígitos" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.movil2}">Movil2</td>
+												<td align="left"><input type="text" name="movil2"
+													placeholder="Telefono a 10 dígitos" /></td>
+											</tr>
+											<tr>
+												<td th:text="#{thead.principal}">Principal</td>
+												<td align="left"><label th:text="#{thead.principalSi}">Si</label>
+													<input type="radio" name="principal" id="Y" th:value="Y"
+													checked="checked" /> <label th:text="#{thead.principalNo}">No</label>
+													<input type="radio" name="principal" id="N" th:value="N" />
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<p>
+								<input type="submit" name="action" value="enviar"
+									th:attr="value=Enviar" formaction="nuevocontacto.htm" /> <input
+									type="button" onclick="cancelarNuevoContacto('nuevoContactoForm')"  value="cancelar" />
+							</p>
+							</div>
+					</form>
+					</div>
+				</div>
+			</div>
 			<div class="clear"></div>
-				<form method="post" action="#">
-				  <table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">
-				  	<thead>
-				  		<tr>
-					  		<th th:text="#{thead.contactos}" colspan="2">Nuevo Contacto</th>
-					  	</tr>	
-				  	</thead>
-					<tbody>  
-						<tr>    
-					       <td th:text="#{thead.idProveedor}">Proveedor</td>
-						   <td align="left">
-						   	<select id="proveedor" name="proveedor" required="required">
-							  <option th:each="prov : ${proveedores}" 
-							          th:value="${prov.idProveedor}"
-							          th:text="${prov.razonSocial}">Proveedor</option>
-							</select>
-						   </td>						
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.nombre}">Nombre</td>  
-						   <td align="left"><input type="text" name="nombreContacto" placeholder="Nombre del Contacto" required="required"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.apPaterno}">ApellidoP</td>  
-						   <td align="left"><input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" required="required"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.apMaterno}">ApellidoM</td>  
-						   <td align="left"><input type="text" name="apellidoMaterno" placeholder="Apellido Materno" required="required"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.email}">Email</td>  
-						   <td align="left"><input type="email" name="email" placeholder="contacto@partner.com"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.email2}">Email</td>  
-						   <td align="left"><input type="email" name="email2" placeholder="alterno1@partner.com"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.email3}">Email</td>  
-						   <td align="left"><input type="email" name="email3" placeholder="alterno2@partner.com"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.email4}">Email</td>  
-						   <td align="left"><input type="email" name="email4" placeholder="alterno3@partner.com"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.telOficina}">TelOficina</td>  
-						   <td align="left"><input type="text" name="telefonoOficina" placeholder="Telefono a 10 dígitos" required="required"/></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.movil1}">Movil1</td>  
-						   <td align="left"><input type="text" name="movil1" placeholder="Telefono a 10 dígitos" /></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.movil2}">Movil2</td>
-						   <td align="left"><input type="text" name="movil2" placeholder="Telefono a 10 dígitos" /></td>
-						</tr>
-						<tr>    
-					       <td th:text="#{thead.principal}">Principal</td>  
-						   <td align="left">
-	      					   <label th:text="#{thead.principalSi}">Si</label>
-					           <input type="radio" name="principal" id="Y" th:value="Y" checked="checked"/>
-				               <label th:text="#{thead.principalNo}">No</label>
-				               <input type="radio" name="principal" id="N" th:value="N" />
-      					   </td>
-					   </tr>  
-					</tbody>  
-					<tfoot>
-						<tr>
-							<td colspan="2">
-							<span>&nbsp;</span>
-							</td>
-						</tr>
-					</tfoot>
-				  </table>
-				  <p><input type="submit" name="action" value="enviar" th:attr="value=Enviar" formaction="nuevocontacto.htm"/> 
-				     <input type="submit" name="action" value="cancelar" th:attr="value=Cancelar" formaction="proveedores.htm"/></p>
-				</form>
 		</div>
-	  </div>
-	  <div class="clear"></div>
-	</div>			  
-	<div th:include="layout :: foot"></div>
-</div>
-
+		<div th:include="layout :: foot"></div>
+	<script type="text/javascript" src="../../resources/js/tabs_old.js"
+		th:src="@{/resources/js/tabs_old.js}"></script>
 </body>
 </html>

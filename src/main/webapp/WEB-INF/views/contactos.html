@@ -4,9 +4,9 @@
 	<title>Contactos</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
-	rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/jsmodal-light.css" th:href="@{/resources/css/jsmodal-light.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
 <div id="contenedor">
@@ -17,25 +17,20 @@
 			<h2 th:text="#{etiq.cabecero.contactos}">Contactos</h2>
 			<div class="clear"></div>
 			<div class="info">	
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount" style=" width : 756px;">  
 					<thead>
 					   <tr>
-					   	   <th colspan="13" align="center" th:text="${proveedor.razonSocial}">razonSocial</th>
+					   	   <th colspan="8" align="center" th:text="${proveedor.razonSocial}">razonSocial</th>
 					   </tr>
 					   <tr>  
-					       <th th:text="#{thead.idContacto}"  class="table-sortable:default" width="10px" align="left">Id Contacto</th>
-					       <th th:text="#{thead.nombre}"  class="table-filterable table-sortable:default" width="100px" align="left">Nombre</th>  
-					       <th th:text="#{thead.apPaterno}"  class="table-filterable table-sortable:default" width="100px" align="left">ApellidoP</th>  
-					       <th th:text="#{thead.apMaterno}"  class="table-filterable table-sortable:default" width="100px" align="left">ApellidoM</th>  
-					       <th th:text="#{thead.email}"  class="table-sortable:default" width="50px" align="left">Email</th>
-					       <th th:text="#{thead.email2}"  class="table-sortable:default" width="50px" align="left">Email</th>  
-					       <th th:text="#{thead.email3}"  class="table-sortable:default" width="50px" align="left">Email</th>  
-					       <th th:text="#{thead.email4}"  class="table-sortable:default" width="50px" align="left">Email</th>    
-					       <th th:text="#{thead.telOficina}"  class="table-sortable:default" width="30px" align="left">TelOficina</th>  
-					       <th th:text="#{thead.movil1}"  class="table-sortable:default" width="30px" align="left">Movil1</th>  
-					       <th th:text="#{thead.movil2}"  class="table-sortable:default" width="30px" align="left">Movil2</th>
-					       <th th:text="#{thead.principal}"  class="table-sortable:default" width="50px" align="left">Principal</th>
-					       <th width="50px" align="left"></th>    
+					       <th th:text="#{thead.idContacto}"  class="table-sortable:default" width="10px" align="left">Id</th>
+					       <th th:text="#{thead.nombre}"  class="table-filterable table-sortable:default" width="70px" align="left">Nombre</th>  
+					       <th th:text="#{thead.apPaterno}"  class="table-filterable table-sortable:default" width="70px" align="left">ApellidoP</th>  
+					       <th th:text="#{thead.apMaterno}"  class="table-filterable table-sortable:default" width="70px" align="left">ApellidoM</th>  
+					       <th th:text="#{thead.correoElectronico}"   width="80px" align="left">Email</th>    
+					       <!-- <th th:text="#{thead.telefonos}"   width="80px" align="left">Telefonos</th>   -->
+					       <th width="30px" align="left">Detalle</th>  
+					       <th width="30px" align="left">Editar</th>    
 					   </tr>  
 					</thead>  
 					<tbody>  
@@ -44,14 +39,33 @@
 					       <td th:text="${cto.nombreContacto}">Nombre</td>
 					       <td th:text="${cto.apPaterno}">Apellido P</td>
 					       <td th:text="${cto.apMaterno}">Appelido M</td>
-					       <td th:text="${cto.email}">Email</td>
-					       <td th:text="${cto.email2}">Email</td>
-					       <td th:text="${cto.email3}">Email</td>
-					       <td th:text="${cto.email4}">Email</td>
-					       <td th:text="${cto.telOficina}">Tel Oficina</td>
-					       <td th:text="${cto.movil1}">Movil 1</td>
-					       <td th:text="${cto.movil2}">Movil 2</td>
-					       <td th:text="(${cto.principal} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
+					       <td >
+							       <!-- <tr><td th:text="#{thead.email}" >Email 1:</td></tr>  -->
+							       <label th:text="${cto.email}">email1</label>
+							       <!-- 
+							       <tr><td th:text="#{thead.email2}" >Email 2</td></tr>
+							       <tr><td><label th:text="${cto.email2}">email2</label></td></tr>
+							       <tr><td th:text="#{thead.email3}" >Email 3</td></tr>
+							       <tr><td><label th:text="${cto.email3}">email3</label></td></tr>
+							       <tr><td th:text="#{thead.email4}" >Email 4</td></tr>
+							       <tr><td><label th:text="${cto.email4}">email4</label></td></tr>
+							       -->
+					       </td>
+					       <!--  <td>
+
+						           <tr><td th:text="#{thead.telOficina}" >Telefono Oficina</td></tr> 
+							       <label th:text="${cto.telOficina}">telefono1</label>
+								   <tr><td th:text="#{thead.movil1}" >Movil 1</td></tr>
+							       <tr><td><label th:text="${cto.movil1}" >Movil 1</label></td></tr>
+							       <tr><td th:text="#{thead.movil2}" >Movil 2</td></tr>
+							       <tr><td><label th:text="${cto.movil2}" >Movil 2</label></td></tr>
+							       <tr><td th:text="#{thead.principal}" >Principal</td></tr>
+							       <tr><td><label th:text="(${cto.principal} == Y) ? #{thead.principalSi} : #{thead.principalNo}" >Principal</label></td></tr>
+					       </td>
+-->
+					       <td> 
+								<a href="#" th:href="'javascript:verDetalleContacto(\'' + @{/detallecontacto.htm(idContacto=${cto.idContacto})} + '\');'" >Detalle</a>
+						   </td>	
 					       <td>
 						   		<!--a href="#" th:href="@{/eliminarcontacto.htm(idContacto=${cto.idContacto}, idProveedor=${proveedor.idProveedor})}">Eliminar</a--> 
 								<a href="#" th:href="@{/actualizarcontacto.htm(idContacto=${cto.idContacto})}">Editar</a>
@@ -61,33 +75,8 @@
 					</tbody>  
 					<tfoot>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td class="table-page:previous" style="cursor:pointer;">
-								&lt; &lt; Anterior
-							</td>
-							<td colspan="11" style="text-align:center;">
-								Paginacion <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
-							</td>
-							<td class="table-page:next" style="cursor:pointer;">Proximo &gt; &gt;</td>
-						</tr>
-						<tr>
-							<td colspan="13"><span id="t1filtercount">
-								</span>&nbsp;de <span id="t1allcount">
-								</span>&nbsp;registros
+							<td colspan="7">
+								<span>&nbsp;</span >
 							</td>
 						</tr>
 					</tfoot>
@@ -103,5 +92,6 @@
 	</div>			  
 	<div th:include="layout :: foot"></div>
 </div>
+<script type="text/javascript" src="/resources/js/jsmodal-1.0d.js" th:src="@{/resources/js/jsmodal-1.0d.js}"></script>
 </body>
 </html>

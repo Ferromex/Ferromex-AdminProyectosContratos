@@ -201,7 +201,7 @@ var Table = (function(){
     FilterableClassName:"table-filterable",
     FilteredRowcountPrefix:"table-filtered-rowcount:",
     RowcountPrefix:"table-rowcount:",
-    FilterAllLabel:"Filter: All",
+    FilterAllLabel:"Filtro:Todos",
 
     AutoPageSizePrefix:"table-autopage:",
     AutoPageJumpPrefix:"table-page:",

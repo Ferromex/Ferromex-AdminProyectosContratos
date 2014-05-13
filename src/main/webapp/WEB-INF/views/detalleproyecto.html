@@ -1,152 +1,149 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Nuevo Proyecto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
-	rel="stylesheet" type="text/css" media="all"></link>
+<title>Nuevo Proyecto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
-<div id="contenedor">
-<div th:include="layout :: head"></div>
-	<div id="contenido">
-	  <div id="principal">	
-		<div class="articulo">
-			<h2 th:text="#{etiq.cabecero.proyectos}">Proyectos</h2>
+	<div id="contenedor">
+		<div th:include="layout :: head"></div>
+		<div id="contenido">
+			<div id="principal">
+				<div class="articulo">
+					<h2 th:text="#{etiq.cabecero.proyectos}">Proyectos</h2>
+					<div class="clear"></div>
+					<table>
+						<thead>
+							<tr>
+								<th th:text="#{thead.nuevoProyecto}" colspan="4">Proyectos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td th:text="#{thead.carpeta}">carpeta</td>
+								<td align="left" colspan="4"><input type="text" name="idCarpeta"
+									th:value="${proyecto.idCarpeta}" readonly="readonly"
+									disabled="disabled" width="20px" size="34px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.empresa}">empresa</td>
+								<td align="left"><input type="text" name="tipoObra"
+									th:value="${proyecto.empresa}" readonly="readonly"
+									disabled="disabled" width="100px" size="34px" /></td>
+								<td th:text="#{thead.origenProyecto}">origenProyecto</td>
+								<td align="left"><input type="text" name="origenProyecto"
+									th:value="${origenProyecto.origenProyectoNombre}"
+									readonly="readonly" disabled="disabled" width="30px"
+									size="34px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.nombreProyecto}">nombreProyecto</td>
+								<td align="left" colspan="3"><textarea name="tipoObra"
+										th:value="${proyecto.nombreProyecto}" readonly="readonly"
+										disabled="disabled" cols="80" rows="5"> </textarea></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.nombreCorto}">nombreCorto</td>
+								<td align="left" colspan="3"><input type="text"
+									name="tipoObra" th:value="${proyecto.nombreCorto}"
+									readonly="readonly" disabled="disabled" width="200px"
+									size="107px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.tipoObra}">tipoObra</td>
+								<td align="left"><input type="text" name="tipoObra"
+									th:value="${tipoObra.obra}" readonly="readonly"
+									disabled="disabled" width="100px" size="35px" /></td>
+								<td th:text="#{thead.division}">division</td>
+								<td align="left"><input type="text" name="division"
+									th:value="${division.nombreDivision}" readonly="readonly"
+									disabled="disabled" width="150px" size="35px" /></td>
+							</tr>
+							<tr>
+
+							</tr>
+							<tr>
+								<td th:text="#{thead.presupuesto}">presupuesto</td>
+								<td align="left"><input type="text" name="presupuesto"
+									th:value="${proyecto.presupuesto}" readonly="readonly"
+									disabled="disabled" width="20px" size="35px" /></td>
+								<td th:text="#{thead.solicitudSAP}">solicitudSAP</td>
+								<td align="left"><input type="text" name="solicitudSAP"
+									th:value="${proyecto.solicitudSAP}" readonly="readonly"
+									disabled="disabled" width="35px" size="35px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.elementoPEP}">elementoPEP</td>
+								<td align="left"><input type="text" name="elementoPEP"
+									th:value="${proyecto.elementoPEP}" readonly="readonly"
+									disabled="disabled" width="35px" size="35px" /></td>
+								<td th:text="#{thead.centroCostos}">centroCostos</td>
+								<td align="left"><input type="text" name="centroCostos"
+									th:value="${proyecto.centroCostos}" readonly="readonly"
+									disabled="disabled" width="35px" size="35px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.fechaRecepcion}">fechaRecepcion</td>
+								<td align="left"><input type="text" name="fechaRecepcion"
+									th:value="${proyecto.fechaRecepcion}" readonly="readonly"
+									disabled="disabled" width="150px" size="10px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.solicitudInversion}">solicitudInversion</td>
+								<td align="left"><input type="text"
+									name="solicitudInversion"
+									th:value="${proyecto.solicitudInversion}" readonly="readonly"
+									disabled="disabled" width="5px" size="10px" /></td>
+								<td th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</td>
+								<td align="left"><input type="text" name="fechaEntregaSAI"
+									th:value="${proyecto.fechaEntregaSAI}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.duracionProy}">duracionProy</td>
+								<td align="left"><input type="text" name="duracionProy"
+									th:value="${proyecto.duracionProy}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.inicioEstimado}">inicioEstimado</td>
+								<td align="left"><input type="text" name="inicioEstimado"
+									th:value="${proyecto.inicioEstimado}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+								<td th:text="#{thead.inicioReal}" width="20%">inicioReal</td>
+								<td align="left"><input type="text" name="inicioReal"
+									th:value="${proyecto.inicioReal}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.finEstimado}">finEstimado</td>
+								<td align="left"><input type="text" name="finEstimado"
+									th:value="${proyecto.finEstimado}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+								<td th:text="#{thead.finReal}">finReal</td>
+								<td align="left"><input type="text" name="finReal"
+									th:value="${proyecto.finReal}" readonly="readonly"
+									disabled="disabled" width="10px" size="10px" /></td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="2"><span>&nbsp;</span></td>
+							</tr>
+						</tfoot>
+					</table>
+					<p>
+						<a href="proyectos.htm">Regresar</a>
+					</p>
+				</div>
+			</div>
 			<div class="clear"></div>
-				  <table >
-				  	<thead>
-				  		<tr>
-					  		<th th:text="#{thead.nuevoProyecto}"  colspan="2">Proyectos</th>
-					  	</tr>	
-				  	</thead>
-					<tbody>
-					    <tr>   
-					       <td th:text="#{thead.empresa}">empresa</td>  
-						   <td align="left">
-						   	<input type="text" name="tipoObra" th:value="${proyecto.empresa}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.nombreProyecto}">nombreProyecto</td>  
-						   <td align="left">
-						   	<input type="text" name="tipoObra" th:value="${proyecto.nombreProyecto}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.nombreCorto}">nombreCorto</td>  
-						   <td align="left">
-						   	<input type="text" name="tipoObra" th:value="${proyecto.nombreCorto}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.tipoObra}">tipoObra</td>  
-						   <td align="left" >
-						   	<input type="text" name="tipoObra" th:value="${tipoObra.obra}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>
-					       <td th:text="#{thead.origenProyecto}">origenProyecto</td>  
-						   <td align="left">
-						   		<input type="text" name="origenProyecto" th:value="${origenProyecto.origenProyectoNombre}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.division}">division</td>  
-						   <td align="left">
-						      <input type="text" name="division" th:value="${division.nombreDivision}" readonly="readonly" disabled="disabled" width="150px" size="50px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.fechaRecepcion}">fechaRecepcion</td>  
-						   <td align="left">
-						   	  <input type="text" name="fechaRecepcion" th:value="${proyecto.fechaRecepcion}" readonly="readonly" disabled="disabled" width="150px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.presupuesto}">presupuesto</td> 
-						   <td align="left">
-						   	<input type="text" name="presupuesto" th:value="${proyecto.presupuesto}" readonly="readonly" disabled="disabled" width="20px" size="20px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.elementoPEP}">elementoPEP</td> 
-						   <td align="left">
-						   	<input type="text" name="elementoPEP" th:value="${proyecto.elementoPEP}" readonly="readonly" disabled="disabled" width="20px" size="20px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.centroCostos}">centroCostos</td> 
-						   <td align="left">
-						   	<input type="text" name="centroCostos" th:value="${proyecto.centroCostos}" readonly="readonly" disabled="disabled" width="20px" size="20px"/>
-						   </td>
-					    </tr>
-						<tr>    
-					       <td th:text="#{thead.solicitudInversion}">solicitudInversion</td>  
-						   <td align="left">
-	      					   <input type="text" name="solicitudInversion" th:value="${proyecto.solicitudInversion}" readonly="readonly" disabled="disabled" width="5px" size="5px"/>
-      					   </td>
-					    </tr>  
-					    <tr>   
-					       <td th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</td> 
-						   <td align="left">
-						   	<input type="text" name="fechaEntregaSAI" th:value="${proyecto.fechaEntregaSAI}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.solicitudSAP}">solicitudSAP</td> 
-						   <td align="left">
-						   	<input type="text" name="solicitudSAP" th:value="${proyecto.solicitudSAP}" readonly="readonly" disabled="disabled" width="20px" size="20px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.inicioEstimado}">inicioEstimado</td> 
-						   <td align="left">
-						   	<input type="text" name="inicioEstimado" th:value="${proyecto.inicioEstimado}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.finEstimado}">finEstimado</td> 
-						   <td align="left">
-						   	<input type="text" name="finEstimado" th:value="${proyecto.finEstimado}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.duracionProy}">duracionProy</td> 
-						   <td align="left">
-						   	<input type="text" name="duracionProy" th:value="${proyecto.duracionProy}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.inicioReal}">inicioReal</td> 
-						   <td align="left">
-						   	<input type="text" name="inicioReal" th:value="${proyecto.inicioReal}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					    <tr>   
-					       <td th:text="#{thead.finReal}">finReal</td> 
-						   <td align="left">
-						   	<input type="text" name="finReal" th:value="${proyecto.finReal}" readonly="readonly" disabled="disabled" width="10px" size="10px"/>
-						   </td>
-					    </tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="2">
-							<span>&nbsp;</span>
-							</td>
-						</tr>
-					</tfoot>
-				  </table>
-				    <p><a href="proyectos.htm">Regresar</a></p>
 		</div>
-	  </div>
-	  <div class="clear"></div>
-	</div>			  
-	<div th:include="layout :: foot"></div>
-</div>
+		<div th:include="layout :: foot"></div>
+	</div>
 
 </body>
 </html>

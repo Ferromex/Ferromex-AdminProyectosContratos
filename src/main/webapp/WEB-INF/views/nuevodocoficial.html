@@ -4,9 +4,8 @@
 	<title>Nuevo Documento Oficial</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link href="/resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}"
-	rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
 <div id="contenedor">
@@ -14,8 +13,8 @@
 	<div id="contenido">
 	  <div id="principal">	
 		<div class="articulo">
-				<form method="post" action="#">
-				  <table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">
+				<form method="post" action="#" id="nuevoDocumentoForm">
+				  <table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount" style=" width : 817px;">
 				  	<thead>
 				  		<tr>
 					  		<th th:text="#{thead.nombreTabla}" colspan="2">Nuevo Documento</th>
@@ -39,7 +38,8 @@
 						<tr>    
 					       <td th:text="#{thead.tipoDoc}">Documento</td>
 						   <td align="left">
-						   	<select id="tipoDocumento" name="tipoDocumento" required="required">
+						   	<select id="tipoDocumento" name="tipoDocumento" required="required" onchange="cambiarEstadoRdnBtnTipoContrato()">
+											<option value="0" >Seleccione un tipo de Documento</option>
 											<option th:each="tdoc : ${tipoDoc}"
 												th:value="${tdoc.idTipoDocumento}"
 												th:text="${tdoc.nombreTipoDocumento}">Tipo Documento</option>
@@ -50,15 +50,15 @@
 					       <td th:text="#{thead.tipoContrato}">TipoContrato</td>  
 						   <td align="left">
 	      					   <label th:text="#{thead.contratoServicio}">Servicio</label>
-					           <input type="radio" name="tipoObra" th:value="SERV" />
+					           <input type="radio" id="tipoObra1" name="tipoObra" disabled="disabled" th:value="SERV" />
 				               <label th:text="#{thead.contratoObra}">Obra</label>
-				               <input type="radio" name="tipoObra" th:value="OBRA" checked="checked"/>
+				               <input type="radio" id="tipoObra2" name="tipoObra" disabled="disabled" th:value="OBRA" />
       					   </td>
 					   </tr>  
 						<tr>    
 					       <td th:text="#{thead.proveedor}">Proveedor</td>
 						   <td align="left">
-						   	<select id="proveedor" name="proveedor" required="required">
+						   	<select id="proveedor" name="proveedor" required="required" >
 							  <option th:each="prov : ${proveedores}" 
 							          th:value="${prov.idProveedor}"
 							          th:text="${prov.razonSocial}">Proveedor</option>

@@ -72,6 +72,23 @@ public class ContactosController {
 	        return "nuevocontacto";
 	    }
 
+	    
+	    @RequestMapping(value="/detallecontacto.htm", method = RequestMethod.GET)
+		public  String setDetalleContacto(@RequestParam("idContacto") int idContacto, Model model)
+		   		throws ServletException, IOException {
+	        
+			logger.info(" - - -  Controller actualizar Contactos - - - " + model);
+	
+	    	model.addAttribute("proveedores", this.proveedorAdmin.obtenerProveedores());
+	    	model.addAttribute("contacto", this.contactoAdmin.consultarContactoPorId(idContacto));
+	        
+	        logger.info(" - - -  MODEL - - - " + model);
+	        
+	        return "detallecontacto";
+
+		}
+	    
+	    
 	    @RequestMapping(value="/actualizarcontacto.htm", method = RequestMethod.GET)
 		public  String setActualizaContacto(@RequestParam("idContacto") int idContacto, Model model)
 		   		throws ServletException, IOException {

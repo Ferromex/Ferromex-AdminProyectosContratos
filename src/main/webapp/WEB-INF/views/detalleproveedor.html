@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html 
-xmlns:th="http://www.thymeleaf.org"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Actualizar Proveedor</title>
+	<title>Detalle Proveedor</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
@@ -13,12 +11,11 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 <div id="contenedor">
 <div th:include="layout :: head"></div>
 	<div id="contenido">
-	  <div id="principal">	
+	  <div id="principal">
 		<div class="articulo">
 			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedor</h2>
 			<div class="clear"></div>
-				<form method="post">
-				  <table id="t1" class="form">
+				  <table id="t1" class="form" style="width: 750px;">
 				  	<thead>
 				  		<tr>
 					  		<th th:text="#{thead.proveedores}" colspan="2">Proveedores</th>
@@ -27,28 +24,28 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 					<tbody>
 					    <tr>   
 					       <td th:text="#{thead.razonSocial}">RazonSoc</td>  
-						   <td align="left"><input type="text" name="razonSocial" th:value="${proveedor.razonSocial}" required="required" /></td>
+						   <td align="left"><input type="text" name="razonSocial" th:value="${proveedor.razonSocial}" disabled="disabled"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.domFiscal}">domFiscal</td>  
-						   <td align="left"><input type="text" name="domFiscal" th:value="${proveedor.domicilioFiscal}" required="required" /></td>
+						   <td align="left"><input type="text" name="domFiscal" th:value="${proveedor.domicilioFiscal}" disabled="disabled"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.domCorresp}">domCorresp</td>
-					       <td align="left"><input type="text" name="domCorrespondencia" th:value="${proveedor.domCorrespondencia}" required="required" /></td>  
+					       <td align="left"><input type="text" name="domCorrespondencia" th:value="${proveedor.domCorrespondencia}" disabled="disabled"/></td>  
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.regAbast}">regAbast</td> 
-					       <td align="left"><input type="number" name="registroAbastecimientos" th:value="${proveedor.registroAbast}" /></td> 
+					       <td align="left"><input type="number" name="registroAbastecimientos" th:value="${proveedor.registroAbast}" disabled="disabled"/></td> 
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.regProy}">regProy</td> 
-					       <td align="left"><input type="number" name="registroProyectos" th:value="${proveedor.registroProyectos}" /></td> 
+					       <td align="left"><input type="number" name="registroProyectos" th:value="${proveedor.registroProyectos}" disabled="disabled" /></td> 
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.zona}">zona</td>  
 						   <td align="left">
-						   	<select id="zonaProveedor" name="zonaProveedor" required="required" >
+						   	<select id="zonaProveedor" name="zonaProveedor" disabled="disabled">
 							  <option th:each="zona : ${zonas}" 
 							          th:value="${zona.idZona}"
 							          th:text="${zona.zona}" 
@@ -59,10 +56,10 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 					    <tr>   
 					       <td th:text="#{thead.obras}">obrasProv</td>
 					       <td>
-								<span th:each="tobra : ${tipoObrasProveedor}">
-									<label th:text="${tobra.label}">Obra Proveedor</label>
-									<input type="checkbox" name="obraProveedor" th:value="${tobra.value}" 
-									th:checked="${tobra.checked}" />
+								<span th:each="tobra : ${tobrasProv}">
+									<label th:text="${tobra.obra}">Obra Proveedor</label>
+									<input type="checkbox" name="obraProveedor" th:value="${tobra.idObra}" 
+									disabled="disabled"/><!-- th:checked="${tobra.idObra == proveedor.obras.idObra}" -->
 								</span>
 					       </td>
 					    </tr>
@@ -76,8 +73,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 					</tfoot>
 				  </table>
 				  	<input id="idProveedor" name="idProveedor" type="hidden" th:value="${proveedor.idProveedor}"/>
-				    <p><input type="submit" value="Submit" th:attr="value=#{boton.actualizar}" formaction="actualizarproveedor.htm"/></p>
-				</form>
+				    <p><a href="proveedores.htm">Regresar</a></p>
 		</div>
 	  </div>
 	  <div class="clear"></div>

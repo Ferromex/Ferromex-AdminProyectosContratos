@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Actualizar Contacto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../../resources/css/ferromex.css"
+	th:href="@{/resources/css/ferromex.css}" rel="stylesheet"
+	type="text/css" media="all"></link>
+<link href="../../resources/css/table.css"
+	th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css"
+	media="all"></link>
+</head>
+<body>
+	<div class="clear"></div>
+	<form method="post">
+		<div class="clear"></div>
+		<table id="t1" class="form">
+			<thead>
+				<tr>
+					<th th:text="#{thead.contactos}" colspan="4">Contactos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{thead.idProveedor}" width="150px">Proveedor</td>
+					<td align="left" colspan="3" ><select id="proveedor" name="proveedor"
+						disabled="disabled" style="width: 540px">
+							<option th:each="prov : ${proveedores}"
+								th:value="${prov.idProveedor}" th:text="${prov.razonSocial}"
+								th:selected="${prov.idProveedor == contacto.proveedor.idProveedor}">Proveedor</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td th:text="#{thead.nombre}">Nombre</td>
+					<td align="left" colspan="3"><input type="text" name="nombreContacto"
+						th:value="${contacto.nombreContacto}" disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{thead.apPaterno}">ApellidoP</td>
+					<td align="left" colspan="3"><input type="text" name="apellidoPaterno"
+						th:value="${contacto.apPaterno}" disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{thead.apMaterno}">ApellidoM</td>
+					<td align="left" colspan="3"><input type="text" name="apellidoMaterno"
+						th:value="${contacto.apMaterno}" disabled="disabled" /></td>
+				</tr>
+
+							<tr>
+								<td th:text="#{thead.email}">Email</td>
+								<td align="left"><input type="email" name="email"
+									th:value="${contacto.email}" disabled="disabled" size="30px" /></td>
+								<td th:text="#{thead.telOficina}">TelOficina</td>
+								<td align="left"><input type="text" name="telefonoOficina"
+									th:value="${contacto.telOficina}" disabled="disabled" /></td>
+							</tr>
+							
+							<tr>
+								<td th:text="#{thead.email2}">Email</td>
+								<td align="left"><input type="email" name="email2"
+									th:value="${contacto.email2}" disabled="disabled" size="30px"/></td>
+								<td th:text="#{thead.movil1}">Movil1</td>
+								<td align="left"><input type="text" name="movil1"
+									th:value="${contacto.movil1}" disabled="disabled" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.email3}">Email</td>
+								<td align="left"><input type="email" name="email3"
+									th:value="${contacto.email3}" disabled="disabled" size="30px"/></td>
+								<td th:text="#{thead.movil2}">Movil2</td>
+								<td align="left"><input type="text" name="movil2"
+									th:value="${contacto.movil2}" disabled="disabled" /></td>
+							</tr>
+							<tr>
+								<td th:text="#{thead.email4}">Email</td>
+								<td align="left"><input type="email" name="email4"
+									th:value="${contacto.email4}" disabled="disabled" size="30px"/></td>
+								<td th:text="#{thead.principal}">Principal</td>
+								<td align="left"><label th:text="#{thead.principalSi}">Si</label>
+									<input type="radio" name="principal" id="Y" th:value="Y"
+									checked="checked" disabled="disabled" /> <label
+									th:text="#{thead.principalNo}">No</label> <input type="radio"
+									name="principal" id="N" th:value="N" disabled="disabled" /></td>
+							</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4"><span>&nbsp;</span></td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="clear"></div>
+
+
+
+
+	</form>
+</body>
+</html>
