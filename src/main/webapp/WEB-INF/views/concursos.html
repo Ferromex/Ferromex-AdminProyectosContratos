@@ -17,7 +17,8 @@
 			<div class="clear"></div>
 			<div class="info">	
 			<form method="post" th:object="${concursoForm}">
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				
+				<table id="t1" class="form">  
 					<thead>
 						<tr>
 							<th colspan="5" align="center" th:text="${proyecto.nombreProyecto}">nombreProyecto</th>
@@ -34,29 +35,36 @@
 								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.estatus}">estatusProyecto</span>
 						    </span>
 						   </td>    	
-					   </tr>  
-					   <tr>  
-					       <th align="center" colspan="8" th:text="#{thead.fechasEstimadas}">Fechas Estimadas</th>
 					   </tr>
-					   <tr>    
-							<td th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</td>
-							<td th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</td>
-							<td th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</td>
-							<td th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</td>
-							<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
-							<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
-							<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
-							<td th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</td>
-						</tr>
+					   </table>
+					   <br/>
+					   
+					   <table class="form">
+					   <thead>  
+						   <tr>  
+						       <th align="center" colspan="8" th:text="#{thead.fechasEstimadas}">Fechas Estimadas</th>
+						   </tr>
+						   <tr>    
+								<td th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</td>
+								<td th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</td>
+								<td th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</td>
+								<td th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</td>
+								<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
+								<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
+								<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
+								<td th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</td>
+							</tr>
+					   </thead>
+					   <tbody>
 						<tr>
-						  	<td th:text="${proyecto.fechEstInvitacion}"></td>
-						  	<td th:text="${proyecto.fechEstVisitaObra}"></td>
-							<td th:text="${proyecto.fechEstPreguntas}"></td>
-							<td th:text="${proyecto.fechEstRespuestas}"></td>
-							<td th:text="${proyecto.fechEstPropuestas}"></td>
-							<td th:text="${proyecto.fechEstRevisionTecnica}"></td>
-							<td th:text="${proyecto.fechEstChecklistTec}"></td>
-							<td th:text="${proyecto.fechEstCartaIntencion}"></td>
+						  	<td th:text="${proyecto.fechEstInvitacion}">fechEstInvitacion</td>
+						  	<td th:text="${proyecto.fechEstVisitaObra}">fechEstVisitaObra</td>
+							<td th:text="${proyecto.fechEstPreguntas}">fechEstPreguntas</td>
+							<td th:text="${proyecto.fechEstRespuestas}">fechEstRespuestas</td>
+							<td th:text="${proyecto.fechEstPropuestas}">fechEstPropuestas</td>
+							<td th:text="${proyecto.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
+							<td th:text="${proyecto.fechEstChecklistTec}">fechEstChecklistTec</td>
+							<td th:text="${proyecto.fechEstCartaIntencion}">fechEstCartaIntencion</td>
 					   </tr>
 				   </tbody>
 					<tfoot>
@@ -67,13 +75,13 @@
 						</tr>
 					</tfoot>
 				</table>
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				
+				<br/>
+				<table id="t1" class="form">  
 					<thead>
 						<tr>
-							<th colspan="15" align="center" th:text="#{thead.gestion.concurso}">gestionConcurso</th>
+							<th colspan="16" align="center" th:text="#{thead.gestion.concurso}">gestionConcurso</th>
 						</tr>
-					</thead>
-					<tbody>  
 					   <tr>    
 							<td th:text="#{thead.idConcurso}">idConcurso</td>
 							<td th:text="#{thead.tipoConcurso}">tipoConcurso</td>
@@ -92,6 +100,8 @@
 							<td th:text="#{thead.fechNotifGanador}">fechNotifGanador</td>
 							<td th:text="#{thead.fechVoBoGanador}">fechVoBoGanador</td>
 						</tr>
+					</thead>
+					<tbody>  
 						<tr th:each="conc : ${proyecto.concursos}">	
 						    <td th:text="${conc.idConcurso}"></td>
 						    <td th:text="${conc.tipoConcurso.concurso}"></td>
@@ -113,7 +123,7 @@
 					</tbody>  
 					<tfoot>
 						<tr>
-							<td colspan="15">
+							<td colspan="16">
 							<span>&nbsp;</span>
 							</td>
 						</tr>

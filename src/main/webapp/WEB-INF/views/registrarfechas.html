@@ -32,6 +32,10 @@
 					       <td>
 					       	<span th:each="estatusp : ${estProyectos}">
 								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.estatus}">estatusProyecto</span>
+								<img th:if="${estatusp.idEstatus  == 2}" src="../../resources/img/red_bullet_1.jpg" th:src="@{/resources/img/red_bullet_1.jpg}"/>
+								<img th:if="${estatusp.idEstatus  == 1}" src="../../resources/img/yellow_bullet_1.jpg" th:src="@{/resources/img/yellow_bullet_1.jpg}"/>
+								<img th:if="${estatusp.idEstatus == 3} " src="../../resources/img/green_bullet_1.jpg" th:src="@{/resources/img/green_bullet_1.jpg}"/>
+								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.idEstatus}">estatusProyecto</span>
 						    </span>
 						   </td>    	
 					   </tr>  
@@ -42,21 +46,25 @@
 							<td th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</td>
 							<td th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</td>
 							<td th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</td>
-							<td th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</td>
-							<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
-							<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
-							<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
-							<td th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</td>
+							<td th:text="#{thead.fechEstRespuestas}" colspan="2"> fechEstRespuestas</td>
 						</tr>
 						<tr>
 						  	<td><input type="date" name="fechaEstInvitacion" th:value="${proyecto.fechEstInvitacion}"/></td>
 						  	<td><input type="date" name="fechaEstVisitaObra" th:value="${proyecto.fechEstVisitaObra}"/></td>
 							<td><input type="date" name="fechaEstPreguntas" th:value="${proyecto.fechEstPreguntas}"/></td>
-							<td><input type="date" name="fechaEstRespuestas" th:value="${proyecto.fechEstRespuestas}"/></td>
+							<td colspan="2"><input type="date" name="fechaEstRespuestas" th:value="${proyecto.fechEstRespuestas}"/></td>
+					   </tr>
+					   <tr>
+					   		<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
+							<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
+							<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
+							<td th:text="#{thead.fechEstCartaIntencion}" colspan="2">fechEstCartaIntencion</td>
+					   </tr>
+					   <tr>
 							<td><input type="date" name="fechaEstPropuestas" th:value="${proyecto.fechEstPropuestas}"/></td>
 							<td><input type="date" name="fechaEstRevisionTecnica" th:value="${proyecto.fechEstRevisionTecnica}"/></td>
 							<td><input type="date" name="fechaEstChecklistTec" th:value="${proyecto.fechEstChecklistTec}"/></td>
-							<td><input type="date" name="fechaEstCartaIntencion" th:value="${proyecto.fechEstCartaIntencion}"/></td>
+							<td colspan="2"><input type="date" name="fechaEstCartaIntencion" th:value="${proyecto.fechEstCartaIntencion}"/></td>
 					   </tr>
 				   </tbody>
 					<tfoot>

@@ -91,14 +91,14 @@
 					       <td th:text="#{thead.solicitudInversion}">solicitudInversion</td>  
 						   <td align="left">
 	      					   <label th:text="#{msg.true}"> Si </label>
-					           <input type="radio" name="solicitudInversion" id="Y" th:value="Y" checked="checked"/>
+					           <input type="radio" name="solicitudInversion" id="Y" th:value="Y" checked="checked" onclick="habilitarEntregaSAI();"/>
 				               <label th:text="#{msg.false}"> No </label>
-				               <input type="radio" name="solicitudInversion" id="N" th:value="N" />
+				               <input type="radio" name="solicitudInversion" id="N" th:value="N" onclick="deshabilitarEntregaSAI();"/>
       					   </td>
 					    </tr>  
 					    <tr>   
 					       <td th:text="#{thead.fechaEntregaSAI}">fechaEntregaSAI</td> 
-						   <td align="left"><input type="date" name="fechaEntregaSAI"/></td>
+						   <td align="left"><input type="date" name="fechaEntregaSAI" id="fechaEntregaSAI"  /></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.solicitudSAP}">solicitudSAP</td> 
@@ -106,23 +106,23 @@
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.inicioEstimado}">inicioEstimado</td> 
-						   <td align="left"><input type="date" name="inicioEstimado"/></td>
+						   <td align="left"><input type="date" name="inicioEstimado" id="inicioEstimado" /></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.finEstimado}">finEstimado</td> 
-						   <td align="left"><input type="date" name="finEstimado"/></td>
+						   <td align="left"><input type="date" name="finEstimado"  id="finEstimado" disabled="disabled"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.duracionProy}">duracionProy</td> 
-						   <td align="left"><input type="text" name="duracionProy" placeholder="Dias" required="required"/></td>
+						   <td align="left"><input type="text" name="duracionProy" id="duracionProy" placeholder="Dias" required="required" onblur="calcularFinProyectoEstimado();"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.inicioReal}">inicioReal</td> 
-						   <td align="left"><input type="date" name="inicioReal"/></td>
+						   <td align="left"><input type="date" name="inicioReal" id="inicioReal" onblur="calcularFinProyectoReal();"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.finReal}">finReal</td> 
-						   <td align="left"><input type="date" name="finReal"/></td>
+						   <td align="left"><input type="date" name="finReal" id="finReal" disabled="disabled"/></td>
 					    </tr>
 					</tbody>
 					<tfoot>
