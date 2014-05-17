@@ -8,14 +8,7 @@
 	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
-	<div id="contenedor">
-		<div th:include="layout :: head"></div>
-		<div id="contenido">
-			<div id="principal">
-				<div class="articulo">
-					<h2 th:text="#{etiq.cabecero.proyectos}">Proyectos</h2>
-					<div class="clear"></div>
-					<table>
+					<table class="form">
 						<thead>
 							<tr>
 								<th th:text="#{thead.nuevoProyecto}" colspan="4">Proyectos</th>
@@ -135,15 +128,6 @@
 							</tr>
 						</tfoot>
 					</table>
-					<p>
-						<a href="proyectos.htm">Regresar</a>
-					</p>
-				</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div th:include="layout :: foot"></div>
-	</div>
 
 </body>
 </html>

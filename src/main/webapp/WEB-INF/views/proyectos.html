@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
 	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/jsmodal-light.css" th:href="@{/resources/css/jsmodal-light.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
 <div id="contenedor">
@@ -16,15 +17,15 @@
 			<h2 th:text="#{etiq.cabecero.proyectos}">proyectos</h2>
 			<div class="clear"></div>
 			<div class="info">	
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount" style=" width : 750px;">  
 					<thead>  
 					   <tr>  
 					       <th th:text="#{thead.idProyecto}" class="table-sortable:default" width="10px" align="left">idProyecto</th>
 					       <!--
 					       <th th:text="#{thead.idCarpeta}" class="table-sortable:default" width="10px" align="left">idCarpeta</th>
 					       -->  
-					       <th th:text="#{thead.empresa}" class="table-filterable table-sortable:default" width="70px" align="left">empresa</th>  
-					       <th th:text="#{thead.nombreProyecto}" class="table-sortable:default" width="100px" align="left">nombreProyecto</th>  
+					       <th th:text="#{thead.empresa}" class="table-filterable table-sortable:default" width="50px" align="left">empresa</th>  
+					       <th th:text="#{thead.nombreProyecto}" class="table-sortable:default" width="70px" align="left">nombreProyecto</th>  
 					       <!-- <th th:text="#{thead.nombreCorto}" class="table-sortable:default" width="100px" align="left">nombreCorto</th> -->  
 					       <th th:text="#{thead.tipoObra}" class="table-filterable table-sortable:default" width="50px" align="left">tipoObra</th>  
 					       <!-- <th th:text="#{thead.origenProyecto}" class="table-filterable table-sortable:default" width="50px" align="left">origenProyecto</th> -->  
@@ -43,7 +44,7 @@
 						   <th th:text="#{thead.inicioReal}" class="table-filterable table-sortable:default" width="50px" align="left">inicioReal</th> 
 						   <th th:text="#{thead.finReal}" class="table-filterable table-sortable:default" width="50px" align="left">finReal</th>
 					        --> 
-					        <th width="25px" align="left">Detalle</th>
+					        <th width="10px" align="left">Detalle</th>
 					   </tr>  
 					</thead>  
 					<tbody>  
@@ -98,8 +99,10 @@
 							
 							    <!-- 
 							    <img src="../../resources/img/icons/lupa_mas.png" th:src="@{/resources/img/icons/lupa_mas.png}" width="35px" height="35px"/>
+							    <a href='#' th:href="@{/detalleproyecto.htm(idProyecto=${proy.idProyecto})}" >Detalle</a>
 							    -->
-							    	<a href='#' th:href="@{/detalleproyecto.htm(idProyecto=${proy.idProyecto})}" >Detalle</a>
+							    <a href="#" th:href="'javascript:verDetalleProyecto(\'' + @{/detalleproyecto.htm(idProyecto=${proy.idProyecto})} + '\');'" >Detalle</a>
+							    	
 							</td>
 					   </tr> 
 					</tbody>  
@@ -108,13 +111,13 @@
 							<td class="table-page:previous" style="cursor:pointer;" colspan="2">
 								&lt; &lt; Anterior
 							</td>
-							<td colspan="3" style="text-align:center;">
+							<td colspan="2" style="text-align:center;">
 								Paginaci&oacute;n <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
 							</td>
 							<td class="table-page:next" style="cursor:pointer;" colspan="2">Pr&oacute;ximo &gt; &gt;</td>
 						</tr>
 						<tr>
-							<td colspan="7"><span id="t1filtercount">
+							<td colspan="6"><span id="t1filtercount">
 								</span>&nbsp;de <span id="t1allcount">
 								</span>&nbsp;registros
 							</td>
@@ -128,6 +131,7 @@
 	  </div>
 	  <div class="clear"></div>
 	</div>			  
+	<script type="text/javascript" src="/resources/js/jsmodal-1.0d.js" th:src="@{/resources/js/jsmodal-1.0d.js}"></script>
 	<div th:include="layout :: foot"></div>
 </div>
 </body>

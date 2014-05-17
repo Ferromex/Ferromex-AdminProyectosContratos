@@ -36,23 +36,30 @@
 						    </span>
 						   </td>    	
 					   </tr>
+					   </tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">
+							<span>&nbsp;</span>
+							</td>
+						</tr>
+					</tfoot>
 					   </table>
 					   <br/>
-					   
 					   <table class="form">
 					   <thead>  
 						   <tr>  
 						       <th align="center" colspan="8" th:text="#{thead.fechasEstimadas}">Fechas Estimadas</th>
 						   </tr>
 						   <tr>    
-								<td th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</td>
-								<td th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</td>
-								<td th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</td>
-								<td th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</td>
-								<td th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</td>
-								<td th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</td>
-								<td th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</td>
-								<td th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</td>
+								<th th:text="#{thead.fechEstInvitacion}">fechEstInvitacion</th>
+								<th th:text="#{thead.fechEstVisitaObra}">fechEstVisitaObra</th>
+								<th th:text="#{thead.fechEstPreguntas}">fechEstPreguntas</th>
+								<th th:text="#{thead.fechEstRespuestas}">fechEstRespuestas</th>
+								<th th:text="#{thead.fechEstPropuestas}">fechEstPropuestas</th>
+								<th th:text="#{thead.fechEstRevisionTecnica}">fechEstRevisionTecnica</th>
+								<th th:text="#{thead.fechEstChecklistTec}">fechEstChecklistTec</th>
+								<th th:text="#{thead.fechEstCartaIntencion}">fechEstCartaIntencion</th>
 							</tr>
 					   </thead>
 					   <tbody>
@@ -75,8 +82,8 @@
 						</tr>
 					</tfoot>
 				</table>
-				
 				<br/>
+				<div style="height: 200px; width 600px;overflow: auto;">
 				<table id="t1" class="form">  
 					<thead>
 						<tr>
@@ -101,24 +108,24 @@
 							<td th:text="#{thead.fechVoBoGanador}">fechVoBoGanador</td>
 						</tr>
 					</thead>
-					<tbody>  
-						<tr th:each="conc : ${proyecto.concursos}">	
-						    <td th:text="${conc.idConcurso}"></td>
-						    <td th:text="${conc.tipoConcurso.concurso}"></td>
-							<td th:text="${conc.fechRealInvitacion}"></td>
-							<td th:text="${conc.fechRealVisitaObra}"></td>
-							<td th:text="${conc.fechRealPreguntas}"></td>
-							<td th:text="${conc.fechRealRespuestas}"></td>
-							<td th:text="${conc.fechRealPropuestas}"></td>
-							<td th:text="${conc.fechRealRevisionTecnica}"></td>
-							<td th:text="${conc.fechRealChecklistTec}"></td>
-							<td th:text="${conc.fechRealCartaIntencion}"></td>
-							<td th:text="(${conc.preciosCompetitivos} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
-							<td th:text="(${conc.enPresupuesto} == Y) ? #{thead.principalSi} : #{thead.principalNo}"></td>
-							<td th:text="${conc.fechRevisionPrecios}"></td>
-							<td th:text="${conc.fechRevisionCatalogo}"></td>
-							<td th:text="${conc.fechNotifGanador}"></td>
-							<td th:text="${conc.fechVoBoGanador}"></td>
+					<tbody>
+						<tr th:each="conc : ${proyecto.concursos}">
+						    <td th:text="${conc.idConcurso}">idConcurso</td>
+						    <td th:text="${conc.tipoConcurso.concurso}">concurso</td>
+							<td th:text="${conc.fechRealInvitacion}">fechRealInvitacion</td>
+							<td th:text="${conc.fechRealVisitaObra}">fechRealVisitaObra</td>
+							<td th:text="${conc.fechRealPreguntas}">fechRealPreguntas</td>
+							<td th:text="${conc.fechRealRespuestas}">fechRealRespuestas</td>
+							<td th:text="${conc.fechRealPropuestas}">fechRealPropuestas</td>
+							<td th:text="${conc.fechRealRevisionTecnica}">fechRealRevisionTecnica</td>
+							<td th:text="${conc.fechRealChecklistTec}">fechRealChecklistTec</td>
+							<td th:text="${conc.fechRealCartaIntencion}">fechRealCartaIntencion</td>
+							<td th:text="(${conc.preciosCompetitivos} == Y) ? #{thead.principalSi} : #{thead.principalNo}">preciosCompetitivos</td>
+							<td th:text="(${conc.enPresupuesto} == Y) ? #{thead.principalSi} : #{thead.principalNo}">enPresupuesto</td>
+							<td th:text="${conc.fechRevisionPrecios}">fechRevisionPrecios</td>
+							<td th:text="${conc.fechRevisionCatalogo}">fechRevisionCatalogo</td>
+							<td th:text="${conc.fechNotifGanador}">fechNotifGanador</td>
+							<td th:text="${conc.fechVoBoGanador}">fechVoBoGanador</td>
 						</tr>
 					</tbody>  
 					<tfoot>
@@ -129,17 +136,37 @@
 						</tr>
 					</tfoot>
 				</table>
-			
-				<table class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount"> 
+				</div>
+			<br/>
+			<div style="height: 200px; width 600px;overflow: auto;">
+				<table class="form"> 
 					<thead>
 						<tr>
-							<th colspan="14" align="center" th:text="#{thead.nuevo.concurso}">Nuevo Concurso</th>
+							<th colspan="15" align="center" th:text="#{thead.nuevo.concurso}">Nuevo Concurso</th>
+						</tr>
+						<tr>	
+							<th>TipoConcurso</th>
+							<th>Fecha Real Invitacion</th>
+							<th>Fecha Real Visita Obra</th>
+							<th>Fecha Real Preguntas</th>
+							<th>Fecha Real Respuestas</th>
+							<th>Fecha Real Propuestas</th>
+							<th>Fecha Real Revision Tecnica</th>
+							<th>Fecha Real Checklist Tecnico</th>
+							<th>Fecha Real Carta Intencion</th>
+							<th>Precios Competitivos</th>
+							<th>En Presupuesto</th>
+							<th>Fecha Revision Precios</th>
+							<th>Fecha Revision Catalogo</th>
+							<th>Fecha Notificacion Ganador</th>
+							<th>fecha VoBo Ganador</th>
 						</tr>
 					</thead>
 					<tbody>  
 						<tr>	
 							<td>
-							    <select id="tipoConcurso" name="tipoConcurso" required="required">
+							    <input type="hidden" name="idProyecto" th:value="${proyecto.idProyecto}" />
+							    <select id="tipoConcurso" name="tipoConcurso" >
 								  <option th:each="tcon : ${tconcurso}" 
 								          th:value="${tcon.idConcurso}"
 								          th:text="${tcon.concurso}">TipoConcurso</option>
@@ -173,15 +200,17 @@
 					</tbody>  
 					<tfoot>
 						<tr>
-							<td colspan="14">
+							<td colspan="15">
 							<span>&nbsp;</span>
 							</td>
 						</tr>
 					</tfoot>
 				</table>
+				</div>
 				  	<input type="submit" value="Actualiza" th:attr="value=#{boton.actualizar}" formaction="concursos.htm"/>
-				  	<input type="submit" value="Cancela" th:attr="value=#{boton.cancelar}" formaction="proyectos.htm"/>
+				  	<input type="submit" value="Cancela" th:attr="value=#{boton.cancelar}" onclick="cancelarActualizacionConcursos();"/>
 				</form>
+				
 				<div class="clear"></div>
 			 </div>
 		</div>

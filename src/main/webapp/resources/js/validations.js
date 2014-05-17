@@ -45,16 +45,25 @@ function cancelarNuevoContacto(nombreForm){
 function verDetalleContacto(strUrl) {
 	Modal.open({
 		ajaxContent : strUrl,
-		width : '60%',
+		width : '55%',
 		height : '40%',
 		hideClose : true,
-		closeAfter : 10
+		closeAfter : 120
 	});
 }
 
 /**********************************************************************************************************
  * Validacion de proyectos
  ***********************************************************************************************************/
+function verDetalleProyecto(strUrl) {
+	Modal.open({
+		ajaxContent : strUrl,
+		width : '55%',
+		height : '90%',
+		hideClose : true,
+		closeAfter : 120
+	});
+}
 function habilitarEntregaSAI(){
 	var objSolicitudInversionYes = document.getElementById("Y");
 	var objSolicitudInversionNo = document.getElementById("N");
@@ -96,6 +105,30 @@ function calcularFinProyectoEstimado(){
 	return null;
 }
 
+/**********************************************************************************************************
+ * Validacion de proveedores
+ ***********************************************************************************************************/
+function verDetalleProveedor(strUrl) {
+	Modal.open({
+		ajaxContent : strUrl,
+		width : '50%',
+		height : '40%',
+		hideClose : true,
+		closeAfter : 120
+	});
+}
+
+
+/**********************************************************************************************************
+ * Validacion de concursos
+ ***********************************************************************************************************/
+function cancelarActualizacionConcursos(){
+	window.location="proyectos.htm";
+}
+
+/**********************************************************************************************************
+ * Validacion de tipos de datos
+ ***********************************************************************************************************/
 function validarFechaFormato(strFecha){
 	var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;  
 	if(strFecha.match(dateformat)){

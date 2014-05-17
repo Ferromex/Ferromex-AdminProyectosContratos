@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
 	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/jsmodal-light.css" th:href="@{/resources/css/jsmodal-light.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
 <div id="contenedor">
@@ -16,7 +17,7 @@
 			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedores</h2>
 			<div class="clear"></div>
 			<div class="info">
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount" style=" width : 750px;">  
 					<thead>
 					   <tr>
 					       <th th:text="#{thead.idProveedor}" class="table-sortable:default" width="10px" align="left">IdProveedor</th>
@@ -24,8 +25,8 @@
 					       <!-- 
 					       <th th:text="#{thead.domFiscal}" class="table-sortable:default" width="150px" align="left">domFiscal</th>  
 					       <th th:text="#{thead.domCorresp}" class="table-sortable:default" width="150px" align="left">domCorresp</th>
-					       -->  
-					       <th th:text="#{thead.regAbast}" class="table-sortable:default" width="50px" align="left">regAbast</th>  
+					       <th th:text="#{thead.regAbast}" class="table-sortable:default" width="50px" align="left">regAbast</th>
+					        -->    
 					       <th th:text="#{thead.regProy}" class="table-sortable:default" width="50px" align="left">regProy</th>  
 					       <th th:text="#{thead.zona}" class="table-filterable table-sortable:default" width="50px" align="left">zona</th>  
 					       <th th:text="#{thead.obras}" class="table-filterable table-sortable:default" width="50px" align="left">obras</th>
@@ -41,8 +42,8 @@
 					       <!-- 
 					       <td th:text="${prov.domicilioFiscal}">dom Fiscal</td>
 					       <td th:text="${prov.domCorrespondencia}">dom Corresp</td>
+					       	<td th:text="${prov.registroAbast}"> reg Abast</td>
 					        -->
-					       <td th:text="${prov.registroAbast}"> reg Abast</td>
 					       <td th:text="${prov.registroProyectos}">reg proy</td>
 					       <td th:text="${prov.zonap.zona}">zona</td>
 					       <td>
@@ -58,7 +59,8 @@
 								<a href="#" th:href="@{/contactos.htm(idProveedor=${prov.idProveedor})}">Contactos</a>
 						   </td>
 						   <td> 
-								<a href="#" th:href="@{/actualizarproveedor.htm(idProveedor=${prov.idProveedor})}">Detalle</a>
+								<!-- <a href="#" th:href="@{/detalleproveedor.htm(idProveedor=${prov.idProveedor})}">Detalle</a>  -->
+								<a href="#" th:href="'javascript:verDetalleProveedor(\'' + @{/detalleproveedor.htm(idProveedor=${prov.idProveedor})} + '\');'" >Detalle</a>
 						   </td>
 						   <td>
 						   		<!-- a href="#" th:href="@{/eliminarproveedor.htm(idProveedor=${prov.idProveedor})}">Eliminar</a--> 
@@ -72,13 +74,13 @@
 							<td class="table-page:previous" style="cursor:pointer;" colspan="2">
 								&lt; &lt; Anterior
 							</td>
-							<td colspan="5" style="text-align:center;">
+							<td colspan="4" style="text-align:center;">
 								Paginaci&oacute;n <span id="t1page"></span>&nbsp;of <span id="t1pages"></span>
 							</td>
 							<td class="table-page:next" style="cursor:pointer;" colspan="2">Pr&oacute;ximo &gt; &gt;</td>
 						</tr>
 						<tr>
-							<td colspan="9"><span id="t1filtercount">
+							<td colspan="8"><span id="t1filtercount">
 								</span>&nbsp;de <span id="t1allcount">
 								</span>&nbsp;registros
 							</td>
@@ -91,7 +93,7 @@
 		</div>
 	  </div>
 	  <div class="clear"></div>
-	  	
+	  <script type="text/javascript" src="/resources/js/jsmodal-1.0d.js" th:src="@{/resources/js/jsmodal-1.0d.js}"></script>
 	</div>			  
 	<div th:include="layout :: foot"></div>
 </div>

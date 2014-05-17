@@ -8,13 +8,6 @@
 	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
 </head>
 <body>
-<div id="contenedor">
-<div th:include="layout :: head"></div>
-	<div id="contenido">
-	  <div id="principal">
-		<div class="articulo">
-			<h2 th:text="#{etiq.cabecero.proveedores}">Proveedor</h2>
-			<div class="clear"></div>
 				  <table id="t1" class="form" style="width: 750px;">
 				  	<thead>
 				  		<tr>
@@ -56,10 +49,9 @@
 					    <tr>   
 					       <td th:text="#{thead.obras}">obrasProv</td>
 					       <td>
-								<span th:each="tobra : ${tobrasProv}">
-									<label th:text="${tobra.obra}">Obra Proveedor</label>
-									<input type="checkbox" name="obraProveedor" th:value="${tobra.idObra}" 
-									disabled="disabled"/><!-- th:checked="${tobra.idObra == proveedor.obras.idObra}" -->
+								<span th:each="tobra : ${tipoObrasProveedor}">
+									<label th:text="${tobra.label}">Obra Proveedor</label>
+									<input type="checkbox" name="obraProveedor" th:value="${tobra.value}"  th:checked="${tobra.checked}" disabled="disabled"/>
 								</span>
 					       </td>
 					    </tr>
@@ -72,14 +64,6 @@
 						</tr>
 					</tfoot>
 				  </table>
-				  	<input id="idProveedor" name="idProveedor" type="hidden" th:value="${proveedor.idProveedor}"/>
-				    <p><a href="proveedores.htm">Regresar</a></p>
-		</div>
-	  </div>
-	  <div class="clear"></div>
-	</div>			  
-	<div th:include="layout :: foot"></div>
-</div>
-
+				  <input id="idProveedor" name="idProveedor" type="hidden" th:value="${proveedor.idProveedor}"/>
 </body>
 </html>

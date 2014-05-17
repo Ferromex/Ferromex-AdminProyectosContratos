@@ -135,17 +135,17 @@ public class ProyectoController {
 
 		@RequestMapping(value="/registrarFechas.htm", method=RequestMethod.POST)
 		public String setRegistrarFechas(ProyectoForm proyectoForm, Model model, RedirectAttributes redirectAttrs){
-			
 			logger.info("- - -  Registro de Fechas POST - - - ");
-			
-			proyectoAdmin.actualizarProyecto(proyectoForm);
-			
+			logger.info("idProyecto: " + proyectoForm.getIdProyecto());
+			try{
+				proyectoAdmin.actualizarProyecto(proyectoForm);
+			}catch(Exception e){
+				logger.error("- - - Error, no es posible salvar la informacion ");
+			}
 			logger.info("- - -  Model reg fechas POST - - - " + model.toString());
-			
 			redirectAttrs.addAttribute("idProyecto", proyectoForm.getIdProyecto());
 			logger.info("- - -  REDIRECT - - - " +redirectAttrs.toString());
 			return "redirect:/concursos.htm?idProyecto={idProyecto}";
-		
 		}
 
 

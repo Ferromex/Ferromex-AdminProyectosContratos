@@ -97,13 +97,34 @@ public class ProveedoresController {
 	    }
 		
 	    
-	@RequestMapping(value = "/detalleproveedor.htm", method = RequestMethod.POST)
-	public String detalleProveedorSubmit(ProveedorForm proveedorForm,
-			@RequestParam("idProveedor") int idProv) {
+	@RequestMapping(value = "/detalleproveedor.htm", method = RequestMethod.GET)
+	public String detalleProveedorSubmit(@RequestParam("idProveedor") int idProv,Model model) {
 		logger.info(" - - -  Controller Proveedores detalle On Submit - - - "
 				+ idProv);
-		proveedorAdmin.actualizarProveedor(proveedorForm, idProv);
-		return "redirect:/proveedores.htm";
+		logger.info(" - - -  Controller actualizar Proveedores - - - " + model);
+		//Se llena la lista con las obras del proveedor llens
+		List<TipoObras> tipoObra = this.tipoObraAdmin.obtenerTipoObraProveedor();
+		Proveedor proveedor = this.proveedorAdmin.consultarProveedor(idProv);
+		Set<TipoObras> tipoObrasProvedor =  proveedor.getObras();
+		List<Checkbox> tipoObrasProveedor = new ArrayList<Checkbox>();
+		for(TipoObras tipoObras:tipoObra){
+			Checkbox check = new Checkbox();
+			check.setId(Integer.toString(tipoObras.getIdObra()));
+			check.setLabel(tipoObras.getObra());
+			check.setDisabled("false");
+			check.setValue(Integer.toString(tipoObras.getIdObra()));
+			for(TipoObras tipoObrasProv : tipoObrasProvedor){
+				if(tipoObras.getIdObra().equals(tipoObrasProv.getIdObra())){
+					check.setChecked("checked");
+				}
+			}
+			tipoObrasProveedor.add(check);
+		}
+        model.addAttribute("tobrasProv",tipoObra);
+        model.addAttribute("tipoObrasProveedor",tipoObrasProveedor);
+    	model.addAttribute("proveedor", proveedor);
+    	model.addAttribute("zonas", this.zonaAdmin.obtenerZonasProveedor());
+		return "detalleproveedor";
 	}
 	    
 	    @RequestMapping(value="/eliminarproveedor.htm", method = RequestMethod.GET)

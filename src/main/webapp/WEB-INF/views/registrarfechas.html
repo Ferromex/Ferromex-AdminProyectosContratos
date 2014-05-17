@@ -17,7 +17,7 @@
 			<div class="clear"></div>
 			<div class="info">	
 			  <form method="post">
-				<table id="t1" class="default table-autosort table-autofilter table-autopage:10 table-stripeclass:alternate table-page-number:t1page table-page-count:t1pages table-filtered-rowcount:t1filtercount table-rowcount:t1allcount">  
+				<table id="t1" class="form">  
 					<thead>
 						<tr>
 							<th colspan="5" align="center" th:text="${proyecto.nombreProyecto}">nombreProyecto</th>
@@ -32,10 +32,12 @@
 					       <td>
 					       	<span th:each="estatusp : ${estProyectos}">
 								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.estatus}">estatusProyecto</span>
+							<!-- 
 								<img th:if="${estatusp.idEstatus  == 2}" src="../../resources/img/red_bullet_1.jpg" th:src="@{/resources/img/red_bullet_1.jpg}"/>
 								<img th:if="${estatusp.idEstatus  == 1}" src="../../resources/img/yellow_bullet_1.jpg" th:src="@{/resources/img/yellow_bullet_1.jpg}"/>
 								<img th:if="${estatusp.idEstatus == 3} " src="../../resources/img/green_bullet_1.jpg" th:src="@{/resources/img/green_bullet_1.jpg}"/>
 								<span th:if="${estatusp.idEstatus} == ${proyecto.estatusProyecto}" th:text="${estatusp.idEstatus}">estatusProyecto</span>
+							-->
 						    </span>
 						   </td>    	
 					   </tr>  
@@ -49,7 +51,9 @@
 							<td th:text="#{thead.fechEstRespuestas}" colspan="2"> fechEstRespuestas</td>
 						</tr>
 						<tr>
-						  	<td><input type="date" name="fechaEstInvitacion" th:value="${proyecto.fechEstInvitacion}"/></td>
+						  	<td>
+						  	<input type="hidden" name="idProyecto" th:value="${proyecto.idProyecto}" />
+						  	<input type="date" name="fechaEstInvitacion" th:value="${proyecto.fechEstInvitacion}"/></td>
 						  	<td><input type="date" name="fechaEstVisitaObra" th:value="${proyecto.fechEstVisitaObra}"/></td>
 							<td><input type="date" name="fechaEstPreguntas" th:value="${proyecto.fechEstPreguntas}"/></td>
 							<td colspan="2"><input type="date" name="fechaEstRespuestas" th:value="${proyecto.fechEstRespuestas}"/></td>
@@ -75,7 +79,7 @@
 						</tr>
 					</tfoot>
 				</table>
-				  	<input type="submit" value="Actualiza" th:attr="value=#{boton.registrarFechas}" formaction="registrarfechas.htm"/>
+				  	<input type="submit" value="Actualiza" th:attr="value=#{boton.registrarFechas}" formaction="registrarFechas.htm"/>
 				    <input type="submit" value="Cancela" th:attr="value=#{boton.cancelar}" formaction="proyectos.htm"/>
 				</form>
 				<div class="clear"></div>
