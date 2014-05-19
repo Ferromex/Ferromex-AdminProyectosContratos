@@ -23,6 +23,7 @@ ext {
         javaVersion = '6.0'
         dbVersion = '11.2.0.3'
         tyVersion = '2.1.2.RELEASE'
+        //tyVersion = '2.1.0.RELEASE'
         
 
 }
@@ -32,8 +33,12 @@ repositories {
     mavenLocal() 
 }
 dependencies() {
-	weblogic files("${System.getenv()['MW_HOME']}/wlserver_12.1/server/lib/wlfullclient.jar")
-	
+   //weblogic files("${System.getenv()['MW_HOME']}/wlserver_12.1/server/lib/wlfullclient.jar")
+   weblogic files("${System.getenv()['MW_HOME']}/wlserver/server/lib/wlfullclient.jar")
+
+   compile ("org.springframework:spring-core:$springVersion")
+   compile ("org.springframework:spring-beans:$springVersion")
+   compile ("org.springframework:spring-tx:$springVersion")
    compile ("org.springframework:spring-orm:$springVersion")
    compile ("org.springframework:spring-aop:$springVersion")
    compile ("org.springframework:spring-webmvc:$springVersion")
@@ -44,7 +49,6 @@ dependencies() {
    compile ("org.springframework.security:spring-security-web:$springSecurity")
    compile ("org.springframework.security:spring-security-config:$springSecurity")
    compile ("org.springframework.security:spring-security-taglibs:$springSecurity")
-   
 
    compile ("taglibs:standard:$taglibVersion")
    
@@ -55,8 +59,10 @@ dependencies() {
 
    compile ("org.hibernate:hibernate-entitymanager:$hibernateVersion")
    compile ("org.hibernate.java-persistence:jpa-api:$jpaApi")
-   compile ("com.oracle:ojdbc6:$dbVersion")
+   //compile ("com.oracle:ojdbc6:$dbVersion")
+   
    compile ("org.thymeleaf:thymeleaf-spring4:$tyVersion")
+   compile ("org.thymeleaf.extras:thymeleaf-extras-springsecurity3:2.1.0.RELEASE")
    compile ("org.thymeleaf:thymeleaf-testing:$tyVersion")
    
    providedCompile 'javax.servlet:servlet-api:2.5'
@@ -104,4 +110,3 @@ task deployToWLS (group:'Deployment', description:'Deploy artifacts to a WLS. Re
 		)
 	}
 }
-
