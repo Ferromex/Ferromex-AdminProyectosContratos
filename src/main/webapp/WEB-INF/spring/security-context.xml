@@ -42,5 +42,82 @@
     </security:authentication-manager>
   -->
   
-   
+ <!-- Authentication using a memory user list -->
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="gerenteArea" password="welcome1" authorities="GERENTE_AREA" />
+                <security:user name="jefeContratos" password="welcome1" authorities="JEFE_CONTRATOS" />
+                <security:user name="jefeBienesInmuebles" password="welcome1" authorities="JEFE_BIENES_INMUEBLES" />
+                <security:user name="analista" password="welcome1" authorities="ANALISTA" />
+                <security:user name="consultaReportes" password="welcome1" authorities="CONSULTA_REPORTES" />
+                <security:user name="capturaSeguimientos" password="welcome1" authorities="CAPTURA_SEGUIMIENTOS" />
+                <security:user name="fechaActividades" password="welcome1" authorities="FECHA_ACTIVIDADES" />
+                <security:user name="todos" password="welcome1" authorities="TODOS" />
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+    <security:http auto-config="true" use-expressions="true">
+        <!-- Login pages -->
+        <security:form-login login-page="/login.htm" authentication-failure-url="/login-error.htm" />
+        <security:logout />
+        <!--
+        	Security zones 
+        	<security:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
+        -->
+        
+		<!--  *************************************************************************************
+		*  CONTACTOS
+		************************************************************************************* -->
+        <security:intercept-url pattern="/contactos.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/actualizarcontacto.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/detallecontacto.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/nuevocontacto.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  PROVEEDORES
+		************************************************************************************* -->        
+		<security:intercept-url pattern="/proveedores.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/actualizarproveedor.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/detalleproveedor.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/nuevoproveedor.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  CONCURSOS
+		************************************************************************************* -->            
+		<security:intercept-url pattern="/concursos.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  PROYECTOS
+		************************************************************************************* -->        
+        <security:intercept-url pattern="/proyectos.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/detalleproyecto.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/nuevoproyecto.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  DOCUMENTOS OFICIALES
+		************************************************************************************* -->  
+        <security:intercept-url pattern="/docsoficiales.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/nuevodocoficial.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  RESPONSABLES
+		************************************************************************************* -->        
+        <security:intercept-url pattern="/listarResponsables.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+		<!--
+		*************************************************************************************
+		*  REGISTRAR FECHAS
+		************************************************************************************* -->        
+        <security:intercept-url pattern="/registrarfechas.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <!--  
+        *************************************************************************************
+        *  REPORTES
+        ************************************************************************************* -->
+        <security:intercept-url pattern="/reportes.htm" access="hasAnyRole('GERENTE_AREA','JEFE_CONTRATOS','JEFE_BIENES_INMUEBLES')" />
+        <security:intercept-url pattern="/*" access="permitAll" />
+        <security:intercept-url pattern="/index.htm" access="permitAll" />
+        <security:intercept-url pattern="/error.htm" access="permitAll" />
+        <security:intercept-url pattern="/login.htm" access="permitAll" />
+    </security:http>
+
 </beans>
