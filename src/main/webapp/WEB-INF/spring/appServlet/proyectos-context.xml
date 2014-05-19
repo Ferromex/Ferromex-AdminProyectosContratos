@@ -21,15 +21,25 @@
         <beans:property name="prefix" value="/WEB-INF/views/" />  
         <beans:property name="suffix" value=".html" />  
         <beans:property name="templateMode" value="HTML5" />  
+        <beans:property name="characterEncoding" value="UTF-8" />
+        <!-- Template cache is true by default. Set to false if you want -->
+        <!-- templates to be automatically updated when modified.        -->
+        <beans:property name="cacheable" value="true" />
     </beans:bean>  
 
     <beans:bean id="templateEngine"  
           class="org.thymeleaf.spring4.SpringTemplateEngine">  
         <beans:property name="templateResolver" ref="templateResolver" />  
+        <beans:property name="additionalDialects">
+            <beans:set>
+                <beans:bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+            </beans:set>
+        </beans:property>
     </beans:bean>  
   
     <beans:bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">  
-        <beans:property name="templateEngine" ref="templateEngine" />  
+        <beans:property name="templateEngine" ref="templateEngine" /> 
+        <beans:property name="characterEncoding" value="UTF-8" /> 
     </beans:bean>
     	
 	<!-- Mapping Static Resources -->
