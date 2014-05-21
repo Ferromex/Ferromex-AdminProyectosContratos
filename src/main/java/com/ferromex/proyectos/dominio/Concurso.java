@@ -1,5 +1,6 @@
 package com.ferromex.proyectos.dominio;
 
+
 import java.io.Serializable;
 import java.util.Date;
 

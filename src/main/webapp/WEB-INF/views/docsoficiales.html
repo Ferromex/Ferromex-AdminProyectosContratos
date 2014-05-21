@@ -37,39 +37,14 @@
 					   <tr th:each="docs : ${docsOficiales}">  
 					       <td th:text="${#numbers.formatInteger(docs.idDocumento,3)}"></td>
 					       <td th:text="${docs.folio}"></td>
-					       <td>
-					       	<span th:each="emp : ${empresas}">
-								<span th:if="${emp.idEmpresa} == ${docs.empresa}" th:text="${emp.nombreEmpresa}">
-						       		Nombre de Empresa</span>
-						    </span>   	
-					       </td>
+					       <td th:text="${docs.empresa.nombreEmpresa}"></td>
 						   <td class="fecha" th:text="${docs.fechaElaboracion}"></td>
-					       <td>
-					       	<span th:each="tdoc : ${tipoDoc}"> 
-					       		<span th:if="${tdoc.idTipoDocumento} == ${docs.tipoDocumento}" th:text="${tdoc.nombreTipoDocumento}">
-					       		Tipo Documento</span> 
-					       	</span>
-					       </td>
+					       <td th:text="${docs.tipoDocumento.nombreTipoDocumento}"></td>
 					       <td th:text="${docs.tipoObra}"></td>
-					       <td>
-					       	<span th:each="prov : ${proveedores}"> 
-					       		<span th:if="${prov.idProveedor} == ${docs.idProveedor}" th:text="${prov.razonSocial}">
-					       		 	Proveedor</span> 
-					       	</span>
-					       </td>
+					       <td th:text="${docs.proveedor.razonSocial}"></td>
 					       <td th:text="${docs.dirigidoA}"></td>
-					       <td>
-					       	<span th:each="proy : ${proyectos}"> 
-					       		<span th:if="${proy.idProyecto} == ${docs.proyecto}" th:text="${proy.nombreProyecto}">
-					       		 	Proyecto</span> 
-					       	</span>
-					       </td>
-					       <td>
-					       	<span th:each="resp : ${responsables}">
-					       		<span th:if="${resp.idResponsable} == ${docs.elaboro}" th:text="${resp.nombreResponsable +' '+ resp.apPaternoResp +' '+ resp.apMaternoResp}">
-					       		 Responsable</span>
-					       	</span>	
-					       </td>
+					       <td th:text="${docs.proyecto.nombreProyecto}"></td>
+					       <td th:text="${docs.elaboro.nombreResponsable +' '+ docs.elaboro.apPaternoResp +' '+ docs.elaboro.apMaternoResp}"></td>
 					       <td th:text="${docs.observaciones}"></td>
 					   </tr> 
 					</tbody>  

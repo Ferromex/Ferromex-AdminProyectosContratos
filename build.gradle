@@ -33,8 +33,8 @@ repositories {
     mavenLocal() 
 }
 dependencies() {
-   //weblogic files("${System.getenv()['MW_HOME']}/wlserver_12.1/server/lib/wlfullclient.jar")
-   weblogic files("${System.getenv()['MW_HOME']}/wlserver/server/lib/wlfullclient.jar")
+   weblogic files("${System.getenv()['MW_HOME']}/wlserver_12.1/server/lib/wlfullclient.jar")
+   //weblogic files("${System.getenv()['MW_HOME']}/wlserver/server/lib/wlfullclient.jar")
 
    compile ("org.springframework:spring-core:$springVersion")
    compile ("org.springframework:spring-beans:$springVersion")

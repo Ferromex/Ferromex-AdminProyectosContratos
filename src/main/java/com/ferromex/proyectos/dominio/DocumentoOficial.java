@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,28 +37,33 @@ import org.springframework.format.annotation.DateTimeFormat;
 		@Column(name = "DOCS_FOLIO")
 		private String folio;
 		
-		@Column(name = "EMPR_ID")
-		private String empresa;
-		
+		@ManyToOne
+		@JoinColumn(name="EMPR_ID")
+		private Empresa empresa;	
+
 		@Column(name = "DOCS_FECHA_ELABORACION")
 		@Temporal(TemporalType.DATE)
 		@DateTimeFormat (pattern="dd/mm/yy")
 		private Date fechaElaboracion;
 	    
-		@Column(name = "TDOC_ID")
-		private Integer tipoDocumento;
-	    
-		@Column(name = "PROV_ID")
-		private Integer idProveedor;
+		@ManyToOne
+		@JoinColumn(name="TDOC_ID")
+		private TipoDocumento tipoDocumento;	
+
+		@ManyToOne
+		@JoinColumn(name="PROV_ID")
+		private Proveedor proveedor;	
 		
 		@Column(name = "DOCS_DIRIGIDOA")
 		private String dirigidoA;
 	    
-		@Column(name = "PROY_ID")
-		private Integer proyecto;
+		@ManyToOne
+		@JoinColumns({@JoinColumn(name = "PROY_ID"), @JoinColumn(name = "PROY_CARPETA")})
+		private Proyecto proyecto;	
 	    
-		@Column(name = "RESP_ID")
-		private Integer elaboro;
+		@ManyToOne
+		@JoinColumn(name="RESP_ID")
+		private Responsable elaboro;	
 	    
 		@Column(name = "DOCS_OBSERVACIONES")
 		private String observaciones;
@@ -77,10 +85,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 			this.folio = folio;
 		}
 		
-		public String getEmpresa() {
+		public Empresa getEmpresa() {
 			return empresa;
 		}
-		public void setEmpresa(String empresa) {
+		public void setEmpresa(Empresa empresa) {
 			this.empresa = empresa;
 		}
 		
@@ -91,18 +99,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 			this.fechaElaboracion = fechaElaboracion;
 		}
 		
-		public Integer getTipoDocumento() {
+		public TipoDocumento getTipoDocumento() {
 			return tipoDocumento;
 		}
-		public void setTipoDocumento(Integer tipoDocumento) {
+		public void setTipoDocumento(TipoDocumento tipoDocumento) {
 			this.tipoDocumento = tipoDocumento;
 		}
 		
-		public Integer getIdProveedor() {
-			return idProveedor;
+		public Proveedor getProveedor() {
+			return proveedor;
 		}
-		public void setIdProveedor(Integer idProveedor) {
-			this.idProveedor = idProveedor;
+		public void setProveedor(Proveedor proveedor) {
+			this.proveedor = proveedor;
 		}
 		
 		public String getDirigidoA() {
@@ -112,17 +120,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 			this.dirigidoA = dirigidoA;
 		}
 		
-		public Integer getProyecto() {
+		public Proyecto getProyecto() {
 			return proyecto;
 		}
-		public void setProyecto(Integer proyecto) {
+		public void setProyecto(Proyecto proyecto) {
 			this.proyecto = proyecto;
 		}
 		
-		public Integer getElaboro() {
+		public Responsable getElaboro() {
 			return elaboro;
 		}
-		public void setElaboro(Integer elaboro) {
+		public void setElaboro(Responsable elaboro) {
 			this.elaboro = elaboro;
 		}
 		
@@ -143,7 +151,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 			return "DocumentoOficial [idDocumento=" + idDocumento + ", folio="
 					+ folio + ", empresa=" + empresa + ", fechaElaboracion="
 					+ fechaElaboracion + ", tipoDocumento=" + tipoDocumento
-					+ ", idProveedor=" + idProveedor + ", dirigidoA="
+					+ ", proveedor=" + proveedor + ", dirigidoA="
 					+ dirigidoA + ", proyecto=" + proyecto + ", elaboro="
 					+ elaboro + ", observaciones=" + observaciones
 					+ ", tipoObra=" + tipoObra + "]";

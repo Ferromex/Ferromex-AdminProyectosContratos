@@ -37,21 +37,21 @@ public class DocumentoOficialDaoImpl implements DocumentoOficialDAO {
 		int year = docOficial.getFechaElaboracion().getYear() - 100;
 		
 		String folio = "";
-		int serie = 000 + docOficial.getIdDocumento();
+		int serie = docOficial.getIdDocumento();
 		logger.info(" - - -  serie - - - " + serie);
 		
-		if(docOficial.getTipoDocumento() == 10)
+		if(docOficial.getTipoDocumento().getIdTipoDocumento() == 10)
 			{
-				folio = docOficial.getEmpresa() + "-GIBP-" + serie  + "-" + docOficial.getTipoObra() + "-" + year;
+				folio = docOficial.getEmpresa().getIdEmpresa() + "-GIBP-" + serie  + "-" + docOficial.getTipoObra() + "-" + year;
 				logger.info(" - - -  CONTRATO - - - ");
 			}
 		else
 			{
-				folio = docOficial.getEmpresa() + "-GIBP-" + serie  + "-" + year;
+				folio = docOficial.getEmpresa().getIdEmpresa() + "-GIBP-" + serie  + "-" + year;
 				logger.info(" - - -  Otro Documento - - - ");
 				docOficial.setTipoObra(null);
 			}
-		
+		logger.info(" - - -  Folio - - - " + folio);
 		docOficial.setFolio(folio);
 		
 

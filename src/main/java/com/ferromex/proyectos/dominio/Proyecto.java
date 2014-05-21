@@ -32,7 +32,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 		@SequenceGenerator(name="proy_seq_gen", sequenceName="PROYECTOS_SEQ")
 		private Integer idProyecto;
 
-		@Id @Column(name = "PROY_CARPETA")
+		@Id 
+		@Column(name = "PROY_CARPETA")
 		@GeneratedValue(strategy=GenerationType.AUTO, generator="carpeta_seq_gen")
 		@SequenceGenerator(name="carpeta_seq_gen", sequenceName="CARPETAS_SEQ")
 		private Integer idCarpeta;

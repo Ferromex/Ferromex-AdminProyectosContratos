@@ -16,17 +16,18 @@
 		<div class="articulo">
 			<h2 >Login</h2>
 			<div class="clear"></div>
+			<div>
+        		<p th:if="${esValido} == 1" th:text="#{msg.loginfail}" class="error">Fallo en el login</p>
+        	</div>	
 			<div class="info">	
-        <p th:if="${loginError}" class="error">Wrong user or password</p>
-        <form th:action="@{/j_spring_security_check}" method="post">
-            <label for="j_username">Username</label>:
-            <input type="text" id="j_username" name="j_username" autofocus="autofocus" /> <br />
-            <label for="j_password">Password</label>:
-            <input type="password" id="j_password" name="j_password" /> <br />
-            <input type="submit" value="Log in" />
-        </form>
-<div class="clear"></div>
-				<div class="clear"><a th:href="@{/nuevoproyecto.htm}">Nuevo Proyecto</a></div>
+        		<form method="post">
+			         <label for="username">Username</label>:
+			         <input type="text" th:name="name" autofocus="autofocus" /> <br />
+			         <label for="password">Password</label>:
+			         <input type="password" th:name="pass" /> <br />
+			         <input type="submit" value="Log in" formaction="validar-login.htm"/>
+			    </form>
+				<div class="clear"></div>
 			 </div>
 		</div>
 	  </div>

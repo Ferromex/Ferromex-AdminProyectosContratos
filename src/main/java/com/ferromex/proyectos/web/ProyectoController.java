@@ -136,7 +136,6 @@ public class ProyectoController {
 		@RequestMapping(value="/registrarFechas.htm", method=RequestMethod.POST)
 		public String setRegistrarFechas(ProyectoForm proyectoForm, Model model, RedirectAttributes redirectAttrs){
 			logger.info("- - -  Registro de Fechas POST - - - ");
-			logger.info("idProyecto: " + proyectoForm.getIdProyecto());
 			try{
 				proyectoAdmin.actualizarProyecto(proyectoForm);
 			}catch(Exception e){

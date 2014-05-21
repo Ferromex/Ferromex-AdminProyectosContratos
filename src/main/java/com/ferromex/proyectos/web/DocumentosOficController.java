@@ -1,6 +1,7 @@
 package com.ferromex.proyectos.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -47,14 +48,7 @@ public class DocumentosOficController {
 		   		Model model)
 		   		throws ServletException, IOException {
 	        
-			logger.info(" - - -  Controller Docs Oficiales - - - ");
-	
 	        model.addAttribute("docsOficiales", this.documentoOficialAdmin.obtenerDocumentosOficiales());
-	        model.addAttribute("empresas", this.empresaAdmin.obtenerEmpresas());
-	        model.addAttribute("responsables", this.responsableAdmin.obtenerResponsables());
-	        model.addAttribute("tipoDoc", this.tipoDocAdmin.obtenerTipoDocumento());
-	        model.addAttribute("proveedores", this.proveedorAdmin.obtenerProveedores());
-	        model.addAttribute("proyectos", this.proyectoAdmin.obtenerProyectos());
 	        
 	        return "docsoficiales";
 
@@ -70,19 +64,7 @@ public class DocumentosOficController {
 	    		return "redirect:/documentosoficiales.htm";
 	    	}
 
-	    	DocumentoOficial docOficial = new DocumentoOficial();
-	        
-	    	docOficial.setEmpresa(documentoOficialForm.getEmpresa());
-	    	docOficial.setFechaElaboracion(documentoOficialForm.getFechaElaboracion());
-	    	docOficial.setTipoDocumento(documentoOficialForm.getTipoDocumento());
-	    	docOficial.setDirigidoA(documentoOficialForm.getDirigidoA());
-	    	docOficial.setProyecto(documentoOficialForm.getProyecto());
-	    	docOficial.setElaboro(documentoOficialForm.getElaboro());
-	    	docOficial.setObservaciones(documentoOficialForm.getObservaciones());
-	    	docOficial.setIdProveedor(documentoOficialForm.getProveedor());
-	    	docOficial.setTipoObra(documentoOficialForm.getTipoObra());
-	        
-	        documentoOficialAdmin.crearDocumentoOficial(docOficial);
+	        documentoOficialAdmin.crearDocumentoOficial(documentoOficialForm);
 	        
 	        return "redirect:/documentosoficiales.htm";
 	    }
@@ -92,9 +74,6 @@ public class DocumentosOficController {
 	    	
 	    	logger.info(" - - -  Controller NvoDocOficial  GET - - - ");
 
-	    	DocumentoOficialForm docOficial = new DocumentoOficialForm();
-
-	    	model.addAttribute("documentoOficialForm", docOficial);
 	    	model.addAttribute("empresas", this.empresaAdmin.obtenerEmpresas());
 	        model.addAttribute("responsables", this.responsableAdmin.obtenerResponsables());
 	        model.addAttribute("tipoDoc", this.tipoDocAdmin.obtenerTipoDocumento());
