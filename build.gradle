@@ -23,8 +23,7 @@ ext {
         javaVersion = '6.0'
         dbVersion = '11.2.0.3'
         tyVersion = '2.1.2.RELEASE'
-        //tyVersion = '2.1.0.RELEASE'
-        
+        aspecjVersion = '1.7.3'
 
 }
 
@@ -49,6 +48,10 @@ dependencies() {
    compile ("org.springframework.security:spring-security-web:$springSecurity")
    compile ("org.springframework.security:spring-security-config:$springSecurity")
    compile ("org.springframework.security:spring-security-taglibs:$springSecurity")
+   
+   compile ("org.aspectj:aspectjrt:$aspecjVersion")
+   compile ("org.aspectj:aspectjtools:$aspecjVersion")
+   compile ("org.aspectj:aspectjweaver:$aspecjVersion")
 
    compile ("taglibs:standard:$taglibVersion")
    

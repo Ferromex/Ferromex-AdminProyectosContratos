@@ -78,7 +78,9 @@
 
     </security:http>
 
-	<!-- Authentication using a memory user list -->
+	<!-- Authentication using a memory user list solo para caso ilustrativo
+		 se deberá utilizar el proveedor de identidades autorizado -->
+		 
     <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>

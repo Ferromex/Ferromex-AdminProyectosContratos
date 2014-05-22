@@ -272,6 +272,7 @@ public class ProyectoForm {
 	}
 
 	public void setInicioEstimado(Date inicioEstimado) {
+		logger.info(" - - -  INICIO ESTIMADA   : " + inicioEstimado + "  - - - ");
 		this.inicioEstimado = inicioEstimado;
 	}
 

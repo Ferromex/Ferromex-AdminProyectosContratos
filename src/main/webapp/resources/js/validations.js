@@ -80,7 +80,33 @@ function deshabilitarEntregaSAI(){
 	objFechaEntregaSAI.required="";
 	return null;
 }
+
 function calcularFinProyectoEstimado(){
+	var objDiasDuracionProyecto = document.getElementById("duracionProy");
+	var intDiasDuracionProyecto
+	if(validarNumero(objDiasDuracionProyecto.value)){
+		intDiasDuracionProyecto = parseInt(objDiasDuracionProyecto.value);
+	}else{
+		alert("La duracion de proyecto debe ser numero");
+	}
+	var objFechaInicioReal = document.getElementById("inicioEstimado");
+	strFecha = objFechaInicioReal.value;
+	if(validarFechaFormato(strFecha)){
+		var fechaInicialArray = strFecha.split("/");
+		var dia  = parseInt(fechaInicialArray[0]);  
+		var mes = parseInt(fechaInicialArray[1]);  
+		var anio = parseInt(fechaInicialArray[2]); 
+		var dteFechaInicial = new Date(anio,mes,dia);
+		//Se agrega la duracion del proyecto
+		dteFechaInicial.setDate(dteFechaInicial.getDate()+intDiasDuracionProyecto);
+		document.getElementById("finEstimado").value = formateoFecha(dteFechaInicial);
+	}else{
+		alert("El formato de la fecha Inicio Estimado es incorrecto, por favor verifiquelo");
+	}
+	return null;
+}
+
+function calcularFinProyectoReal(){
 	var objDiasDuracionProyecto = document.getElementById("duracionProy");
 	var intDiasDuracionProyecto
 	if(validarNumero(objDiasDuracionProyecto.value)){
@@ -98,12 +124,14 @@ function calcularFinProyectoEstimado(){
 		var dteFechaInicial = new Date(anio,mes,dia);
 		//Se agrega la duracion del proyecto
 		dteFechaInicial.setDate(dteFechaInicial.getDate()+intDiasDuracionProyecto);
-		document.getElementById("finEstimado").value = formateoFecha(dteFechaInicial);
+		document.getElementById("finReal").value = formateoFecha(dteFechaInicial);
 	}else{
-		alert("El formato de la fecha es incorrecto, por favor verifiquelo");
+		alert("El formato de la fecha Inicio Real es incorrecto, por favor verifiquelo");
 	}
 	return null;
 }
+
+
 
 /**********************************************************************************************************
  * Validacion de proveedores
@@ -130,12 +158,13 @@ function cancelarActualizacionConcursos(){
  * Validacion de tipos de datos
  ***********************************************************************************************************/
 function validarFechaFormato(strFecha){
-	var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;  
+	var dateformat = /^((0[0-9]|1[0-9]|2[0-9]|3(0|1)))(-|\/)((0[0-9])|(1[0|1|2]))(-|\/)((?:19|20)[0-9][0-9])$/;
 	if(strFecha.match(dateformat)){
 		return true;
 	}else{
 		return false;
 	}
+	return true;
 }
 function validarNumero(strNumero){  
    var numbers = /^[0-9]+$/;  

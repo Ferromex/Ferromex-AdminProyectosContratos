@@ -106,7 +106,7 @@
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.inicioEstimado}">inicioEstimado</td> 
-						   <td align="left"><input type="date" name="inicioEstimado" id="inicioEstimado" /></td>
+						   <td align="left"><input type="date" name="inicioEstimado" id="inicioEstimado" onblur="calcularFinProyectoEstimado();"/></td>
 					    </tr>
 					    <tr>   
 					       <td th:text="#{thead.finEstimado}">finEstimado</td> 
