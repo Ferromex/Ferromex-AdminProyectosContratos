@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+		<bean id="loggingAspecto" class="com.ferromex.proyectos.aspectos.LoggingAspectos" />
+		<bean id="relojAspecto" class="com.ferromex.proyectos.aspectos.RelojAspectos" />
+		
+		<!-- Para el caso del reloj y del logger se utiliza configuración con XML, 
+			 para funcionalidad propia del aplicativo deberá utilizarse annotations -->
+			 
+		<aop:config>
+				     
+		     <aop:aspect ref="loggingAspecto">		     
+		        <aop:before method="antesDeInvocar" pointcut="execution(* com.ferromex.proyectos.servicio.DocumentoOficialAdmin.obtenerDocumentosOficiales(..))"/>
+		        <aop:after method="despuesDeInvocar" pointcut="execution(* com.ferromex.proyectos.servicio.DocumentoOficialAdmin.obtenerDocumentosOficiales(..))"/>
+		     </aop:aspect>				     
+		     
+		     <aop:aspect ref="relojAspecto">		     
+		        <aop:around method="tomaTiempo" pointcut="execution(* com.ferromex.proyectos.servicio.DocumentoOficialAdmin.obtenerDocumentosOficiales(..))"/>		        
+		     </aop:aspect>				     
+
+		</aop:config>
+
+
+</beans>

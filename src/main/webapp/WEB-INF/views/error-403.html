@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="../../resources/css/ferromex.css" th:href="@{/resources/css/ferromex.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/table.css" th:href="@{/resources/css/table.css}" rel="stylesheet" type="text/css" media="all"></link>
+	<link href="../../resources/css/jsmodal-light.css" th:href="@{/resources/css/jsmodal-light.css}" rel="stylesheet" type="text/css" media="all"></link>
+</head>
+<body>
+<div id="contenedor">
+<div th:include="layout :: head"></div>
+	<div id="contenido">
+	  <div id="principal">	
+		<div class="articulo">
+			<h2 >Error</h2>
+			<div class="clear"></div>
+			<div class="info">
+				<h3>ERROR 403: El usuario es válido pero no tiene con el ROL para ejecutar la actividad</h3>
+				<a th:href="@{/logout.htm}">Log out</a>
+				<div class="clear"></div>
+			 </div>
+		</div>
+	  </div>
+	  <div class="clear"></div>
+	</div>		
+	</div>	  
+	<div th:include="layout :: foot"></div>
+    </body>
+</html>
